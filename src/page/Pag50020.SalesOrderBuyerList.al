@@ -3,7 +3,7 @@
 page 50020 "SalesOrderCreditBuyer"
 {
     ApplicationArea = all;
-    Caption = 'Sales Order Credit Authorization List';
+    Caption = 'Sales Order Buyer List ';
     CardPageID = 50019;
     DataCaptionFields = "Sell-to Customer No.";
     Editable = true;

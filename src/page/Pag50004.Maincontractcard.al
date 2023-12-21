@@ -240,7 +240,7 @@ page 50004 "Main contract card"
                 end;
 
             }
-            action("Cancle for approval")
+            action("Cancel for approval")
             {
                 ApplicationArea = all;
                 Promoted = true;
@@ -266,7 +266,7 @@ page 50004 "Main contract card"
                 end;
 
             }
-            action("cancle")
+            action("cancel")
             {
                 ApplicationArea = all;
                 Promoted = true;

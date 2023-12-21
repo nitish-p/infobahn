@@ -9,6 +9,14 @@ table 50001 Rebate
         {
             Caption = 'Types of Rebate';
         }
+        field(2; "Program ID"; Code[50])
+        {
+            Caption = 'Program ID';
+        }
+        field(3; "Prgram Name"; text[100])
+        {
+            Caption = 'Program Name';
+        }
     }
     keys
     {
@@ -16,5 +24,6 @@ table 50001 Rebate
         {
             Clustered = true;
         }
+        key(PK2; "Program ID") { }
     }
 }

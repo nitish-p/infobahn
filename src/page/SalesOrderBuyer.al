@@ -1,7 +1,7 @@
 
-page 50019 "SalesOrderBuyerList"
+page 50019 "SalesOrderBuyer"
 {
-    Caption = 'Sales Order Buyer list';
+    Caption = 'Sales Order Buyer';
     PageType = Document;
     ApplicationArea = all;
     UsageCategory = Administration;

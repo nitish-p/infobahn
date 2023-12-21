@@ -1,5 +1,8 @@
 pageextension 50031 SalesOrderListExt extends "Sales Order List"
 {
+    DataCaptionExpression = 'Sales Order Operation Team';
+    Caption = 'Sales Order Operation Team';
+
     layout
     {
         addafter("Location Code")

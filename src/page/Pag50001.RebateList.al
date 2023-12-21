@@ -18,6 +18,14 @@ page 50001 "Rebate List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Types of Rebate field.';
                 }
+                field("Program ID"; Rec."Program ID")
+                {
+                    ApplicationArea = all;
+                }
+                field("Prgram Name"; Rec."Prgram Name")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }
