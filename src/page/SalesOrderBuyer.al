@@ -9,7 +9,7 @@ page 50019 "SalesOrderBuyerList"
     SourceTable = "Sales Header";
     SourceTableView = where("Document Type" = filter(Order));
     AdditionalSearchTerms = 'Sales Commitment, Sale Order, Client Order';
-
+    //added by nitish
     AboutTitle = 'About sales order details';
     AboutText = 'Choose the order details and fill in order lines with quantities of what you are selling. Post the order when you are ready to ship or invoice. This creates posted sales shipments and posted sales invoices.';
 
