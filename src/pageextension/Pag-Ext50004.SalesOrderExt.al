@@ -1,6 +1,6 @@
 pageextension 50004 SalesOrderExt extends "Sales Order"
 {
-    Caption = 'Sales Order Operation';
+    Caption = 'Sales Order Operation Team';
     layout
     {
         addafter(General)

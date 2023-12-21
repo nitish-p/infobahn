@@ -5,7 +5,7 @@ profile Rebate
     Promoted = true;
     Enabled = true;
 }
-page 50012 Rebate
+page 50026 Rebate
 {
     ApplicationArea = All;
     Caption = 'Rebate';

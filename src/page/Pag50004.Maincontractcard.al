@@ -1,6 +1,6 @@
 page 50004 "Main contract card"
 {
-    Caption = 'Main contract card';
+    Caption = 'Master contract card';
     PageType = Card;
     SourceTable = "Master contract";
 

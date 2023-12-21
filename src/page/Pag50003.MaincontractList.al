@@ -1,7 +1,7 @@
 page 50003 "Main contract List"
 {
     ApplicationArea = All;
-    Caption = 'Main contract List';
+    Caption = 'Master contract List';
     PageType = List;
     SourceTable = "Master contract";
     UsageCategory = Lists;
