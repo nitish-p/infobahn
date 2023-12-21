@@ -1343,6 +1343,13 @@ page 50013 "SalesOrderCreditAuthorization"
         StatusStyleTxt := Rec.GetStatusStyleText();
     end;
 
+    local procedure MyProcedure()
+    var
+        myInt: Integer;
+    begin
+        Message('hello');
+    end;
+
     trigger OnInit()
     begin
 #if not CLEAN21
