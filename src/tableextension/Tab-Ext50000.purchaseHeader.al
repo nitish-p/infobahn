@@ -39,7 +39,7 @@ tableextension 50000 purchaseHeader extends "Purchase Header"
         }
         field(50007; "Customer No."; code[50])
         {
-            Caption = 'Salesperson Name';
+            Caption = 'Customer No.';
             DataClassification = ToBeClassified;
             TableRelation = Customer."No.";
             trigger OnValidate()

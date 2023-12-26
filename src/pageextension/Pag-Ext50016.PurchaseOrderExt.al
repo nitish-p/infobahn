@@ -19,6 +19,7 @@ pageextension 50016 PurchaseOrderExt extends "Purchase Order"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Salesperson Name field.';
+                    Editable = true;
                 }
                 field("PR No."; Rec."PR No.")
                 {

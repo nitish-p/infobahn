@@ -165,7 +165,7 @@ table 50005 "Vendor sub contract Header"
     }
     keys
     {
-        key(PK; "Subcontracts ID")
+        key(PK; "Subcontracts ID", "Contract ID")
         {
             Clustered = true;
         }
