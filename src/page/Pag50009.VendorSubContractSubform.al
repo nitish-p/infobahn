@@ -86,6 +86,13 @@ page 50009 "Vendor Sub Contract Subform"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Start Date field.';
                 }
+                field("Subcontracts ID"; Rec."Subcontracts ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Subcontracts ID field.';
+                    Editable = true;
+                }
+
             }
         }
     }

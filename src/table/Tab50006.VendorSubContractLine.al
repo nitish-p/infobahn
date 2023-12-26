@@ -95,6 +95,7 @@ table 50006 "Vendor Sub Contract Line"
         {
             Caption = 'Subcontracts ID';
             DataClassification = ToBeClassified;
+
         }
         field(16; NLC; Code[50])
         {
