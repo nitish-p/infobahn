@@ -58,7 +58,7 @@ table 50000 District
     }
     keys
     {
-        key(PK; "District Code", "Post Code")
+        key(PK; "District Code", "District Name")
         {
             Clustered = true;
         }
