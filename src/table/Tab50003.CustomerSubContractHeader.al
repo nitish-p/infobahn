@@ -65,16 +65,19 @@ table 50003 "Customer Sub Contract Header"
         {
             Caption = 'Customer';
             DataClassification = ToBeClassified;
+            TableRelation = Customer.Name;
         }
         field(13; "Child Customer"; Code[50])
         {
             Caption = 'Child Customer';
             DataClassification = ToBeClassified;
+            TableRelation = Customer.Name;
         }
         field(14; Location; Code[50])
         {
             Caption = 'Location';
             DataClassification = ToBeClassified;
+            TableRelation = Location.Code;
         }
         field(15; "Exit Clause Date"; Date)
         {
@@ -166,6 +169,7 @@ table 50003 "Customer Sub Contract Header"
         {
 
             DataClassification = ToBeClassified;
+            TableRelation = "Sales Header"."SO Stage";
         }
 
 

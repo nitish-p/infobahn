@@ -43,6 +43,10 @@ pageextension 50000 CustomerPageExt extends "Customer Card"
                 {
                     ApplicationArea = all;
                 }
+                field("District Code"; Rec."District Code")
+                {
+                    ApplicationArea = all;
+                }
                 field("Creation Date & Time"; Rec."Creation Date & Time")
                 {
                     ApplicationArea = all;

@@ -32,10 +32,11 @@ tableextension 50003 ItemTabExt extends Item
             Caption = 'MSP (Minimum Selling Price)';
             DataClassification = ToBeClassified;
         }
-        field(50006; "Master Warehouse"; enum Item_MasterWarehouse)
+        field(50006; "Master Warehouse"; code[50])
         {
             Caption = 'Master Warehouse';
             DataClassification = ToBeClassified;
+            TableRelation = Location.Code;
         }
         field(50007; NOMENCLATURE; Text[100])
         {

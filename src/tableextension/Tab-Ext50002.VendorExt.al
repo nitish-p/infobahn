@@ -17,5 +17,12 @@ tableextension 50002 "Vendor Ext" extends Vendor
             Caption = 'CIN No.';
             DataClassification = ToBeClassified;
         }
+        field(50003; "District Code"; code[50])
+        {
+            Caption = 'District Code';
+            DataClassification = ToBeClassified;
+            TableRelation = District."District Code";
+        }
+
     }
 }

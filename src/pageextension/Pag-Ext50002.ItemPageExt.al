@@ -13,18 +13,22 @@ pageextension 50002 ItemPageExt extends "Item Card"
                 field("AMC Contract Name"; Rec."AMC Contract Name")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("AMC SAID Number"; Rec."AMC SAID Number")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("AMC Period From"; Rec."AMC Period From")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("AMC Period To"; Rec."AMC Period To")
                 {
                     ApplicationArea = All;
+                    Visible = false;
                 }
                 field("MSP (Minimum Selling Price)"; Rec."MSP (Minimum Selling Price)")
                 {

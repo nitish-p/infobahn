@@ -7,18 +7,32 @@ table 50006 "Vendor Sub Contract Line"
     {
         field(1; "Type (GL, Item, FA, Resources, Charges)"; Enum VendorSubCon_Types)
         {
-            Caption = 'Type (GL, Item, FA, Resources, Charges)';
+            Caption = 'Type';
             DataClassification = ToBeClassified;
         }
         field(2; "No."; Code[50])
         {
             Caption = 'No.';
             DataClassification = ToBeClassified;
+            TableRelation = if ("Type (GL, Item, FA, Resources, Charges)" = const(" ")) "Standard Text"
+            else
+            if ("Type (GL, Item, FA, Resources, Charges)" = const(GL)) "G/L Account"
+            else
+            if ("Type (GL, Item, FA, Resources, Charges)" = const(FA)) "Fixed Asset"
+            else
+            IF ("Type (GL, Item, FA, Resources, Charges)" = CONST(Item)) Item WHERE(Blocked = CONST(false), "Sales Blocked" = CONST(false))
+            ELSE
+            IF ("Type (GL, Item, FA, Resources, Charges)" = CONST(Item)) Item WHERE(Blocked = CONST(false))
+            else
+            if ("Type (GL, Item, FA, Resources, Charges)" = const(Resources)) "Resource"
+            else
+            if ("Type (GL, Item, FA, Resources, Charges)" = const(Charges)) "Item Charge";
         }
         field(3; Quantity; Decimal)
         {
             Caption = 'Quantity';
             DataClassification = ToBeClassified;
+
         }
         field(4; Rate; Decimal)
         {
@@ -49,6 +63,7 @@ table 50006 "Vendor Sub Contract Line"
         {
             Caption = 'Location';
             DataClassification = ToBeClassified;
+            TableRelation = Location.Code;
         }
         field(10; Processed; Boolean)
         {

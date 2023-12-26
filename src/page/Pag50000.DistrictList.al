@@ -5,6 +5,7 @@ page 50000 "District List"
     PageType = List;
     SourceTable = District;
     UsageCategory = Lists;
+    // AutoSplitKey = true;
 
     layout
     {

@@ -7,10 +7,11 @@ tableextension 50004 BOMComponentExt extends "BOM Component"
             Caption = 'Bundled Type';
             DataClassification = ToBeClassified;
         }
-        field(50002; Customer; enum BOMCustomer)
+        field(50002; Customer; text[100])
         {
             Caption = 'Customer';
             DataClassification = ToBeClassified;
+            TableRelation = Customer.Name;
         }
         field(50003; "Customer Qty"; Decimal)
         {
@@ -27,5 +28,6 @@ tableextension 50004 BOMComponentExt extends "BOM Component"
             Caption = 'Integration';
             DataClassification = ToBeClassified;
         }
+
     }
 }

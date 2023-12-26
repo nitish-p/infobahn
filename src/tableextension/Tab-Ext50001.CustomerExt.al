@@ -46,6 +46,7 @@ tableextension 50001 "Customer Ext" extends Customer
         {
             Caption = 'District';
             DataClassification = ToBeClassified;
+            // TableRelation = District."District Code";
         }
         field(50009; "Creation Date & Time"; DateTime)
         {
@@ -142,10 +143,27 @@ tableextension 50001 "Customer Ext" extends Customer
             Caption = 'Legal Case Date';
             DataClassification = ToBeClassified;
         }
-        // field(; ""; )
+        field(50028; "District Code"; Code[50])
+        {
+            Caption = 'District Code';
+            DataClassification = ToBeClassified;
+            TableRelation = District."District Code";
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                recDistrict: Record District;
+            begin
+                recDistrict.Reset();
+                recDistrict.SetRange("District Code", "District Code");
+                if recDistrict.FindFirst() then begin
+                    recDistrict."District Name" := District;
+                end;
+            end;
+        }
+        // field(50029; "Types of Customer"; enum Customer_TypesOfCustomer)
         // {
-        //     Caption = '';
         //     DataClassification = ToBeClassified;
+        //     Caption = 'Types of Customer';
         // }
     }
 }

@@ -1,15 +1,15 @@
 enum 50038 "SalesHeader_SOTypes"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = ' ';
     }
-    value(1; RDG)
-    {
-        Caption = 'RDG';
-    }
+    // value(1; RDG)
+    // {
+    //     Caption = 'RDG';
+    // }
     value(2; "Back to Back")
     {
         Caption = 'Back to Back';
@@ -22,12 +22,12 @@ enum 50038 "SalesHeader_SOTypes"
     {
         Caption = 'Rental';
     }
-    value(5; DSG)
-    {
-        Caption = 'DSG';
-    }
-    value(6; ABG)
-    {
-        Caption = 'ABG';
-    }
+    // value(5; DSG)
+    // {
+    //     Caption = 'DSG';
+    // }
+    // value(6; ABG)
+    // {
+    //     Caption = 'ABG';
+    // }
 }

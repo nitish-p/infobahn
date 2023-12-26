@@ -119,16 +119,31 @@ table 50002 "Master contract"
         {
             Caption = 'BU Head';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".Name;
         }
         field(24; Salesperson; code[50])
         {
             Caption = 'Salesperson';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".Name;
         }
         field(25; "Customer Code"; Code[50])
         {
             Caption = 'Customer Code';
             DataClassification = ToBeClassified;
+            TableRelation = Customer."No.";
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                Customer: Record Customer;
+            begin
+                Customer.Reset();
+                Customer.SetRange(Customer."No.", "Customer Code");
+                if Customer.FindFirst() then Begin
+                    "Customer Name" := Customer.Name;
+                End;
+
+            end;
         }
         field(26; "Customer Name"; Text[100])
         {

@@ -18,6 +18,10 @@ pageextension 50001 VendorPageExt extends "Vendor Card"
                 {
                     ApplicationArea = All;
                 }
+                field("District Code"; Rec."District Code")
+                {
+                    ApplicationArea = all;
+                }
 
             }
         }

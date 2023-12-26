@@ -9,11 +9,40 @@ table 50004 "Customer Sub Contract Line"
         {
             Caption = 'Type ';
             DataClassification = ToBeClassified;
+
         }
         field(2; "No."; Code[50])
         {
             Caption = 'No.';
             DataClassification = ToBeClassified;
+            TableRelation = if ("Type " = const(" ")) "Standard Text"
+            else
+            if ("Type " = const(GL)) "G/L Account"
+            else
+            if ("Type " = const(FA)) "Fixed Asset"
+            else
+            IF ("Type " = CONST(Item)) Item WHERE(Blocked = CONST(false), "Sales Blocked" = CONST(false))
+            ELSE
+            IF ("Type " = CONST(Item)) Item WHERE(Blocked = CONST(false))
+            else
+            if ("Type " = const(Resources)) "Resource"
+            else
+            if ("Type " = const(Charges)) "Item Charge";
+
+            // ValidateTableRelation = false;
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                RecItem: record Item;
+                RecGl: Record "G/L Account";
+                RecFA: Record "Fixed Asset";
+            begin
+                // RecItem.Reset();
+                // RecItem.SetRange("No.","No.");
+                // if RecItem.FindFirst() then begin
+                // end;
+            end;
+
         }
         field(3; Quantity; Decimal)
         {
@@ -54,6 +83,7 @@ table 50004 "Customer Sub Contract Line"
         {
             Caption = 'Location';
             DataClassification = ToBeClassified;
+            TableRelation = Location.Code;
         }
         field(11; Processed; Boolean)
         {
@@ -97,4 +127,8 @@ table 50004 "Customer Sub Contract Line"
 
         }
     }
+    var
+        RecItem: record Item;
+        RecGl: Record "G/L Account";
+        RecFA: Record "Fixed Asset";
 }
