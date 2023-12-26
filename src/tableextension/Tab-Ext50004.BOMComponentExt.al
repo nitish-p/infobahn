@@ -28,6 +28,35 @@ tableextension 50004 BOMComponentExt extends "BOM Component"
             Caption = 'Integration';
             DataClassification = ToBeClassified;
         }
+        field(50006; Item; Code[50])
+        {
+            Caption = 'Item';
+            DataClassification = ToBeClassified;
+            TableRelation = Item."No.";
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                CalcFields(UOM);
+                CalcFields("Qty per UOM");
+
+            end;
+        }
+        field(50007; UOM; Code[50])
+        {
+            Caption = 'UOM';
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Item."Base Unit of Measure" where("No." = field(Item)));
+        }
+        field(50008; "Qty per UOM"; Code[50])
+        {
+            Caption = 'Qty per UOM';
+            DataClassification = ToBeClassified;
+            TableRelation = "Item Unit of Measure"."Qty. per Unit of Measure";
+
+        }
+
 
     }
 }

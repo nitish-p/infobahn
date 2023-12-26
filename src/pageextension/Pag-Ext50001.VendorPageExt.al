@@ -21,6 +21,7 @@ pageextension 50001 VendorPageExt extends "Vendor Card"
                 field("District Code"; Rec."District Code")
                 {
                     ApplicationArea = all;
+                    TableRelation = District."District Code";
                 }
 
             }

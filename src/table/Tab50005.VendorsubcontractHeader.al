@@ -63,23 +63,26 @@ table 50005 "Vendor sub contract Header"
         {
             Caption = 'Vendor';
             DataClassification = ToBeClassified;
-            TableRelation = Vendor.Name;
+            TableRelation = Vendor."No.";
             trigger OnValidate()
             var
                 myInt: Integer;
                 recVendor: Record Vendor;
             begin
-                recVendor.Reset();
-                recVendor.SetRange(recVendor.Name, Vendor);
-                if recVendor.FindFirst() then begin
-                    "Order Address" := recVendor.Address;
-                end;
+                // recVendor.Reset();
+                // recVendor.SetRange(recVendor.Name, Vendor);
+                // if recVendor.FindFirst() then begin
+                //     "Order Address" := recVendor.Address;
+                // end;
+                CalcFields("Order Address");
             end;
         }
         field(13; "Order Address"; code[100])
         {
             Caption = 'Order Address';
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(vendor.Address where("No." = field(Vendor)));
         }
         field(14; Location; Code[50])
         {

@@ -137,18 +137,16 @@ table 50002 "Master contract"
                 myInt: Integer;
                 Customer: Record Customer;
             begin
-                Customer.Reset();
-                Customer.SetRange(Customer."No.", "Customer Code");
-                if Customer.FindFirst() then Begin
-                    "Customer Name" := Customer.Name;
-                End;
+                CalcFields("Customer Name");
 
             end;
         }
         field(26; "Customer Name"; Text[100])
         {
             Caption = 'Customer Name';
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Name where("No." = field("Customer Code")));
         }
         field(27; "Customer PO No."; Text[100])
         {

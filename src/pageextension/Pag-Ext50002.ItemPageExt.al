@@ -37,6 +37,7 @@ pageextension 50002 ItemPageExt extends "Item Card"
                 field("Master Warehouse"; Rec."Master Warehouse")
                 {
                     ApplicationArea = All;
+                    TableRelation = Location.Code;
                 }
                 field(NOMENCLATURE; Rec.NOMENCLATURE)
                 {

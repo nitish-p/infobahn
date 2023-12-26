@@ -24,6 +24,21 @@ pageextension 50003 BundleAssemblyPageExt extends "Assembly BOM"
             {
                 ApplicationArea = all;
             }
+            field(Item; Rec.Item)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Item field.';
+            }
+            field(UOM; Rec.UOM)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the UOM field.';
+            }
+            field("Qty per UOM"; Rec."Qty per UOM")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Qty per UOM field.';
+            }
         }
     }
 }

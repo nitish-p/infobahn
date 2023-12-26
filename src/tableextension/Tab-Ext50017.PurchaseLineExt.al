@@ -6,11 +6,21 @@ tableextension 50017 PurchaseLineExt extends "Purchase Line"
         {
             Caption = 'Program ID';
             DataClassification = ToBeClassified;
+            TableRelation = Rebate."Program ID";
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                CalcFields("Program Name");
+
+            end;
         }
         field(50001; "Program Name"; Text[100])
         {
             Caption = 'Program Name';
-            DataClassification = ToBeClassified;
+            // DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Rebate."Prgram Name" where("Program ID" = field("Program ID")));
         }
         field(50002; Rebate; Decimal)
         {
@@ -36,6 +46,7 @@ tableextension 50017 PurchaseLineExt extends "Purchase Line"
         {
             Caption = 'Supplier Contract';
             DataClassification = ToBeClassified;
+            TableRelation = "Vendor sub contract Header"."Contract ID";
         }
     }
 }

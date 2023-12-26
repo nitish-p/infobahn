@@ -38,14 +38,17 @@ pageextension 50000 CustomerPageExt extends "Customer Card"
                 field("Third Party Evaluation"; Rec."Third Party Evaluation")
                 {
                     ApplicationArea = all;
+
                 }
                 field(District; Rec.District)
                 {
                     ApplicationArea = all;
+                    Visible = false;
                 }
                 field("District Code"; Rec."District Code")
                 {
                     ApplicationArea = all;
+                    TableRelation = District."District Code";
                 }
                 field("Creation Date & Time"; Rec."Creation Date & Time")
                 {

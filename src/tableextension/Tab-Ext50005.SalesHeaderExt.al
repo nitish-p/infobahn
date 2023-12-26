@@ -19,18 +19,22 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
                 recvendor: Record Vendor;
 
             begin
-                recvendor.Reset();
-                recvendor.SetRange("No.", rec."Vendor No.");
-                if FindFirst() then begin
-                    rec."Vendor Name" := recvendor.Name;
+                // recvendor.Reset();
+                // recvendor.SetRange("No.", rec."Vendor No.");
+                // if FindFirst() then begin
+                //     rec."Vendor Name" := recvendor.Name;
 
-                end;
+                // end;
+                CalcFields("Vendor Name");
             end;
         }
         field(50001; "Vendor Name"; Text[100])
         {
             Caption = 'Vendor Name';
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(vendor.name where("No." = field("Vendor No.")));
+
         }
         field(50002; "SO types "; enum SalesHeader_SOTypes)
         {

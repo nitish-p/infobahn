@@ -6,11 +6,14 @@ tableextension 50000 purchaseHeader extends "Purchase Header"
         {
             Caption = 'SO. No';
             DataClassification = ToBeClassified;
+            TableRelation = "Sales Header"."No.";
         }
         field(50001; "Customer Name"; Text[200])
         {
             Caption = 'Customer Name';
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup(Customer.Name where("No." = field("Customer No.")));
         }
         field(50002; "PR No."; Code[50])
         {
@@ -32,11 +35,20 @@ tableextension 50000 purchaseHeader extends "Purchase Header"
         {
             Caption = 'Supplier Contract ID';
             DataClassification = ToBeClassified;
+            TableRelation = "Vendor sub contract Header"."Contract ID";
         }
         field(50007; "Customer No."; code[50])
         {
             Caption = 'Salesperson Name';
             DataClassification = ToBeClassified;
+            TableRelation = Customer."No.";
+            trigger OnValidate()
+            var
+                myInt: Integer;
+            begin
+                CalcFields("Customer Name");
+
+            end;
         }
     }
 }
