@@ -93,6 +93,7 @@ page 50009 "Vendor Sub Contract Subform"
                     Editable = true;
                 }
 
+
             }
         }
     }

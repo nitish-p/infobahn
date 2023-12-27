@@ -7,6 +7,7 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         {
             Caption = 'PO No.';
             DataClassification = ToBeClassified;
+            TableRelation = "Purchase Header"."No.";
         }
         field(50030; "Vendor No."; Code[50])
         {
@@ -131,12 +132,13 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         {
             Caption = 'Submittor';
             DataClassification = ToBeClassified;
-            // TableRelation="Salesperson/Purchaser
+            TableRelation = "Salesperson/Purchaser".name;
         }
         field(50021; Collector; code[100])
         {
             Caption = 'Collector';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".name;
         }
         field(50022; "Installation Date"; Date)
         {
@@ -152,21 +154,25 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         {
             Caption = 'Hand Delivery Person Name';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".name;
         }
         field(50025; "Hand Delivery Person Mobile"; text[50])
         {
             Caption = 'Hand Delivery Person Mobile';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".name;
         }
         field(50026; "Warehouse Pick up Person Name"; code[50])
         {
             Caption = 'Warehouse Pick up Person Name';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".name;
         }
         field(50027; "Warehouse Pick up Person Mobile"; text[100])
         {
             Caption = 'Warehouse Pick up Person Mobile';
             DataClassification = ToBeClassified;
+            TableRelation = "Salesperson/Purchaser".name;
         }
         field(50028; "Warehouse Pick up Person KYC Document"; enum SalesHeader_WareHouseKYC)
         {

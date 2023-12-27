@@ -6,6 +6,7 @@ tableextension 50006 SalesLineExt extends "Sales Line"
         {
             Caption = 'Program ID';
             DataClassification = ToBeClassified;
+            TableRelation = rebate."Program ID";
         }
         field(50001; Rebate; Decimal)
         {
