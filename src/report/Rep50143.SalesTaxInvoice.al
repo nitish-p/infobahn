@@ -1,4 +1,4 @@
-report 50143 "PurchaseTaxInvoice"
+report 50143 "SalesTaxInvoice"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -18,6 +18,15 @@ report 50143 "PurchaseTaxInvoice"
             {
 
             }
+            column(E_Way_Bill_No_; "E-Way Bill No.") { }
+            column(E_Way_Bill_Date; ' ') { }
+            column(QR_Code; "QR Code") { }
+            column(Acknowledgement_Date; "Acknowledgement Date") { }
+            column(Acknowledgement_No_; "Acknowledgement No.") { }
+            column(Comment; Comment) { }
+            column(Requested_Delivery_Date; ' ') { }
+            column(IRN_Hash; "IRN Hash") { }
+
             column(Reference_Invoice_No_; "Reference Invoice No.")
             {
 

@@ -162,7 +162,7 @@ pageextension 50006 SalesShipmentExt extends "Posted Sales Shipment"
                 begin
                     shimpmentheader.Reset();
                     shimpmentheader.SetRange("No.", Rec."No.");
-                    Report.RunModal(50105, true, true, shimpmentheader);
+                    Report.RunModal(50106, true, true, shimpmentheader);
 
 
                 end;

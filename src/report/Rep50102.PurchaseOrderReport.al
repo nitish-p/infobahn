@@ -1,4 +1,4 @@
-report 50102 "Purchase Order Report Arya"
+report 50102 "Purchase Order Report"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -56,6 +56,7 @@ report 50102 "Purchase Order Report Arya"
             column(PostCode; PostCode) { }
             column(countryCode; countryCode) { }
             column(stNamee; stNamee) { }
+            column(TermsOfDelivery; Comment) { }
 
             dataitem("Purchase Line"; "Purchase Line")
             {

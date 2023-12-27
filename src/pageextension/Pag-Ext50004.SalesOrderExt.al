@@ -17,6 +17,21 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Vendor No. field.';
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                        recvendor: Record Vendor;
+
+                    begin
+                        recvendor.Reset();
+                        recvendor.SetRange("No.", rec."Vendor No.");
+                        if recvendor.FindFirst() then begin
+                            rec."Vendor Name" := recvendor.Name;
+                            // Message(rec."Vendor Name");
+
+                        end;
+
+                    end;
                 }
                 field("Vendor Name"; Rec."Vendor Name")
                 {

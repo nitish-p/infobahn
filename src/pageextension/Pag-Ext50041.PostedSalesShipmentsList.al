@@ -161,7 +161,7 @@ pageextension 50041 PostedSalesShipmentsList extends "Posted Sales Shipments"
                 begin
                     shimpmentheader.Reset();
                     shimpmentheader.SetRange("No.", Rec."No.");
-                    Report.RunModal(50105, true, true, shimpmentheader);
+                    Report.RunModal(50106, true, true, shimpmentheader);
 
 
                 end;

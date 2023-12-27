@@ -1,4 +1,4 @@
-report 50145 "SalesDebitNote"
+report 50145 "PurchaseDebitNote"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
@@ -8,7 +8,7 @@ report 50145 "SalesDebitNote"
 
     dataset
     {
-        dataitem("Sales Invoice Header"; "Purch. Inv. Header")
+        dataitem("Sales Invoice Header"; "Purch. Cr. Memo Hdr.")
         {
             RequestFilterFields = "No.";
             column(compinfo_name; compinfo.Name)
@@ -95,7 +95,7 @@ report 50145 "SalesDebitNote"
             // {
 
             // }
-            column(Order_Date; "Order Date")
+            column(Order_Date; ' ')// "Order Date")
             {
 
             }
@@ -108,7 +108,7 @@ report 50145 "SalesDebitNote"
 
             }
 
-            dataitem("Sales Invoice Line"; "Purch. Inv. Line")
+            dataitem("Sales Invoice Line"; "Purch. Cr. Memo Line")
             {
                 DataItemLink = "Document No." = field("No.");
                 DataItemLinkReference = "Sales Invoice Header";

@@ -1,4 +1,4 @@
-report 50129 "Sales Credit Note Format Arya"
+report 50129 "Sales Credit Note"
 {
 
     UsageCategory = ReportsAndAnalysis;
@@ -13,6 +13,14 @@ report 50129 "Sales Credit Note Format Arya"
             DataItemTableView = sorting("No.");
             RequestFilterFields = "No.";
             column(No_; "No.") { }
+            column(Acknowledgement_Date; "Acknowledgement Date") { }
+            column(Acknowledgement_No_; "Acknowledgement No.") { }
+            column(Comment; Comment) { }
+            column(Requested_Delivery_Date; ' ') { }
+            column(E_Way_Bill_No_; "E-Way Bill No.") { }
+            column(E_Way_Bill_Date; ' ') { }
+            column(IRN_Hash; "IRN Hash") { }
+            column(QR_Code; "QR Code") { }
             column(BilltoName_DataItemName; "Bill-to Name")
             {
             }

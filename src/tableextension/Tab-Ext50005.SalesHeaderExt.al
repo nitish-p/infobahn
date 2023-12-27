@@ -11,30 +11,30 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         }
         field(50030; "Vendor No."; Code[50])
         {
-            Caption = 'Customer Ref. No. (PR NO)';
+            Caption = 'Vendor No.';
             DataClassification = ToBeClassified;
             TableRelation = Vendor."No.";
-            trigger OnValidate()
-            var
-                myInt: Integer;
-                recvendor: Record Vendor;
+            // trigger OnValidate()
+            // var
+            //     myInt: Integer;
+            //     recvendor: Record Vendor;
 
-            begin
-                // recvendor.Reset();
-                // recvendor.SetRange("No.", rec."Vendor No.");
-                // if FindFirst() then begin
-                //     rec."Vendor Name" := recvendor.Name;
+            // begin
+            //     recvendor.Reset();
+            //     recvendor.SetRange("No.", rec."Vendor No.");
+            //     if FindFirst() then begin
+            //         rec."Vendor Name" := recvendor.Name;
 
-                // end;
-                CalcFields("Vendor Name");
-            end;
+            //     end;
+            //     // CalcFields("Vendor Name");
+            // end;
         }
         field(50001; "Vendor Name"; Text[100])
         {
             Caption = 'Vendor Name';
-            //DataClassification = ToBeClassified;
-            FieldClass = FlowField;
-            CalcFormula = lookup(vendor.name where("No." = field("Vendor No.")));
+            DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup(vendor.name where("No." = field("Vendor No.")));
 
         }
         field(50002; "SO types "; enum SalesHeader_SOTypes)

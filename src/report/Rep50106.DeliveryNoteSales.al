@@ -1,9 +1,9 @@
-report 50106 "Delivery Note Arya"
+report 50106 "Delivery Note Sales"
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     DefaultLayout = RDLC;
-    MaximumDatasetSize = 1000000;
+    //MaximumDatasetSize = 1000000;
     RDLCLayout = 'DeliveryNoteAryaREAL.rdl';
     dataset
     {
