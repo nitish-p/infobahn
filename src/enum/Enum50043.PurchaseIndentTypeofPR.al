@@ -1,8 +1,11 @@
-enum 50001 "Purchase_POTypes"
+enum 50043 PurchaseIndent_TypeofPR
 {
     Extensible = true;
-    value(0; " ") { }
-
+    
+    value(0; " ")
+    {
+        Caption = ' ';
+    }
     value(1; MOQ)
     {
         Caption = 'MOQ';

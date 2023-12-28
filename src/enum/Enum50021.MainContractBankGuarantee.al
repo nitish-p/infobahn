@@ -1,15 +1,15 @@
 enum 50021 "MainContract_BankGuarantee"
 {
     Extensible = true;
-    value(2; " ")
+    value(0; " ")
     {
         Caption = ' ';
     }
-    value(0; Yes)
+    value(1; Yes)
     {
         Caption = 'Yes';
     }
-    value(1; No)
+    value(2; No)
     {
         Caption = 'No';
     }

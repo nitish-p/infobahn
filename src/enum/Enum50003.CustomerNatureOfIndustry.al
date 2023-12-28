@@ -1,8 +1,8 @@
 enum 50003 "Customer_NatureOfIndustry"
 {
     Extensible = true;
-    value(2; " ") { }
-    value(0; Micro)
+    value(0; " ") { }
+    value(2; Micro)
     {
         Caption = 'Micro';
     }

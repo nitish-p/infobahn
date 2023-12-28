@@ -1,12 +1,12 @@
 enum 50008 "Customer_LegalCase"
 {
     Extensible = true;
-    value(3; " ") { }
-    value(0; Yes)
+    value(0; " ") { }
+    value(1; Yes)
     {
         Caption = 'Yes';
     }
-    value(1; No)
+    value(2; No)
     {
         Caption = 'No';
     }

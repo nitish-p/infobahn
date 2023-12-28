@@ -1,9 +1,9 @@
 enum 50017 "MainContract_BillingType"
 {
     Extensible = true;
-    value(3; " ") { }
+    value(0; " ") { }
 
-    value(0; "Fixed")
+    value(3; "Fixed")
     {
         Caption = 'Fixed';
     }

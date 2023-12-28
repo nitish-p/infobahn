@@ -1,8 +1,8 @@
 enum 50004 "Customer_TypesofCustomer"
 {
     Extensible = true;
-    value(5; " ") { }
-    value(0; "Pvt. Ltd")
+    value(0; " ") { }
+    value(5; "Pvt. Ltd")
     {
         Caption = 'Pvt. Ltd';
     }

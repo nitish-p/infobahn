@@ -1,9 +1,9 @@
 enum 50006 "Customer_MSMEStatus"
 {
     Extensible = true;
-    value(3; " ") { }
+    value(0; " ") { }
 
-    value(0; Micro)
+    value(2; Micro)
     {
         Caption = 'Micro';
     }

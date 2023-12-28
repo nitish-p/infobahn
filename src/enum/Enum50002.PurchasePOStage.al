@@ -1,8 +1,8 @@
 enum 50002 "Purchase_POStage"
 {
     Extensible = true;
-    value(3; " ") { }
-    value(0; Authorize)
+    value(0; " ") { }
+    value(3; Authorize)
     {
         Caption = 'Authorize';
     }
