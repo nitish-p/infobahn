@@ -33,6 +33,10 @@ page 50028 "Purchase Intends"
                 {
                     ToolTip = 'Specifies the value of the  SO No. field.';
                 }
+                field("Location Code"; Rec."Location Code")
+                {
+                    ApplicationArea = all;
+                }
                 field(" SO date"; Rec." SO date")
                 {
                     ToolTip = 'Specifies the value of the  SO date field.';

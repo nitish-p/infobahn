@@ -50,5 +50,9 @@ tableextension 50000 purchaseHeader extends "Purchase Header"
 
             end;
         }
+        field(50008; "Referance Quote Comp No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 }

@@ -63,10 +63,16 @@ table 50008 "Purchase Indent Line"
             Caption = 'Document No.';
             DataClassification = ToBeClassified;
         }
+        field(9; "Location Code"; Code[20])
+        {
+            Caption = 'Location Code';
+            DataClassification = ToBeClassified;
+            TableRelation = Location.Code;
+        }
     }
     keys
     {
-        key(PK; "No.")
+        key(PK; "Document No.")
         {
             Clustered = true;
         }

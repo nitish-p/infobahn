@@ -47,6 +47,10 @@ page 50027 "Purchase Indent Subform"
                     ApplicationArea = all;
 
                 }
+                field("Location Code"; Rec."Location Code")
+                {
+                    ApplicationArea = all;
+                }
             }
         }
     }

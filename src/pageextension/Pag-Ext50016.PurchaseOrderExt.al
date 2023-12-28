@@ -43,6 +43,13 @@ pageextension 50016 PurchaseOrderExt extends "Purchase Order"
                 }
             }
         }
+        addafter("Charge Group Code")
+        {
+            field("Referance Quote Comp No."; Rec."Referance Quote Comp No.")
+            {
+                ApplicationArea = all;
+            }
+        }
     }
     actions
     {
