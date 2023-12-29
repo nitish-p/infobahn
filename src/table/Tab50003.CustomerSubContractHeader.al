@@ -8,7 +8,7 @@ table 50003 "Customer Sub Contract Header"
     {
         field(1; "Subcontracts ID"; Code[50])
         {
-            Caption = 'Subcontracts ID';
+            Caption = 'Customer Subcontracts ID';
             DataClassification = ToBeClassified;
         }
         field(2; "Contract ID"; code[50])

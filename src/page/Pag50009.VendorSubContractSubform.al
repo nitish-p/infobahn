@@ -3,6 +3,7 @@ page 50009 "Vendor Sub Contract Subform"
     Caption = 'Vendor Sub Contract Subform';
     PageType = ListPart;
     SourceTable = "Vendor Sub Contract Line";
+    AutoSplitKey = true;
 
 
     layout
@@ -20,6 +21,7 @@ page 50009 "Vendor Sub Contract Subform"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the No. field.';
+
                 }
                 field(Quantity; Rec.Quantity)
                 {
@@ -90,7 +92,8 @@ page 50009 "Vendor Sub Contract Subform"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Subcontracts ID field.';
-                    Editable = true;
+
+
                 }
 
 

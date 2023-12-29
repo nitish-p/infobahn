@@ -17,10 +17,8 @@ page 50012 "Purchase Indent"
                 {
                     ToolTip = 'Specifies the value of the PR No. field.';
                     ApplicationArea = all;
-                    trigger OnValidate()
-                    begin
+                    DrillDownPageId = "No. Series";
 
-                    end;
                 }
                 field(" Type of PR"; Rec." Type of PR")
                 {
@@ -179,6 +177,18 @@ page 50012 "Purchase Indent"
                 field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = all;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                        recPurchIndentLine: Record "Purchase Indent Line";
+                    begin
+                        recPurchIndentLine.Reset();
+                        recPurchIndentLine.SetRange(recPurchIndentLine."Document No.", rec."PR No.");
+                        if recPurchIndentLine.FindFirst() then begin
+                            recPurchIndentLine."Location Code" := rec."Location Code";
+                        end;
+
+                    end;
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
                 {
@@ -325,4 +335,7 @@ page 50012 "Purchase Indent"
             MESSAGE('Purchase Quote No.: %1 Created Successfully...', RecPH."No.");
         END;
     end;
+
+
+
 }

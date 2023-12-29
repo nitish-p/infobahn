@@ -4,6 +4,7 @@ page 50027 "Purchase Indent Subform"
     Caption = 'Purchase Indent Subform';
     PageType = ListPart;
     SourceTable = "Purchase Indent Line";
+    AutoSplitKey = true;
 
     layout
     {
@@ -40,6 +41,7 @@ page 50027 "Purchase Indent Subform"
                 {
                     ToolTip = 'Specifies the value of the  Expected Delivery Date (ADD) field.';
                     ApplicationArea = all;
+                    Caption = 'Expected Delivery Date (EDD)';
                 }
                 field("Customer Delivery Date (CDD)"; Rec."Customer Delivery Date (CDD)")
                 {
@@ -51,7 +53,36 @@ page 50027 "Purchase Indent Subform"
                 {
                     ApplicationArea = all;
                 }
+                field("Document No."; Rec."Document No.")
+                {
+                    ToolTip = 'Specifies the value of the Document No. field.';
+                    Visible = false;
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                        RecPurchaseIndentHeader: Record "Purchase Indent Header";
+                    begin
+                        RecPurchaseIndentHeader.Reset();
+                        RecPurchaseIndentHeader.SetRange(RecPurchaseIndentHeader."PR No.", rec."Document No.");
+                        if RecPurchaseIndentHeader.FindFirst() then begin
+                            RecPurchaseIndentHeader."Shortcut Dimension 1 Code" := rec."Shortcut Dimension 1 Code";
+                            RecPurchaseIndentHeader."Shortcut Dimension 2 Code" := Rec."Shortcut Dimension 2 Code";
+                        end;
+                    end;
+                }
+                field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")
+                {
+                    ToolTip = 'Specifies the value of the Shortcut Dimension 1 field.';
+                }
+                field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
+                {
+                    ToolTip = 'Specifies the value of the Shortcut Dimension 2 field.';
+                }
+
             }
         }
+
+
     }
+
 }

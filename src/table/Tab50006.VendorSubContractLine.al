@@ -102,13 +102,22 @@ table 50006 "Vendor Sub Contract Line"
             Caption = 'NLC';
             DataClassification = ToBeClassified;
         }
+        field(17; "Document No"; code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(18; "Line No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
     keys
     {
-        key(PK; "Type (GL, Item, FA, Resources, Charges)")
+        key(PK; "Type (GL, Item, FA, Resources, Charges)", "Document No", "Line No.")
         {
             Clustered = true;
         }
-        key(no; "No.") { }
+        // key(PK2; "Subcontracts ID") { }
+
     }
 }

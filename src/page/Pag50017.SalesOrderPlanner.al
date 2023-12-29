@@ -1850,6 +1850,40 @@ page 50017 "Sales Order Planner"
         }
         area(processing)
         {
+            group(New)//Yash CCIT 
+            {
+                Caption = 'New';
+                action("Create Purchase Indent")
+                {
+                    Caption = 'Create Purchase Indent';
+                    ApplicationArea = all;
+                    Image = CreateDocument;
+                    RunObject = page 50012;
+
+
+                    trigger OnAction()
+                    var
+                        recPurchIndentHdr: Record "Purchase Indent Header";
+                        SalesHeader: Record "Sales Header";
+
+                    begin
+                        SalesHeader.reset();
+                        SalesHeader.SetRange("No.", rec."No.");
+                        if SalesHeader.FindFirst() then begin
+                            recPurchIndentHdr.SetRange("PR No.", recPurchIndentHdr."PR No.");
+                            if recPurchIndentHdr.FindFirst() then
+                                recPurchIndentHdr.Init();
+                            recPurchIndentHdr." SO No." := rec."No.";
+                            recPurchIndentHdr."Location Code" := rec."Location Code";
+                            recPurchIndentHdr.Insert();
+                        end;
+
+
+
+                    end;
+
+                }
+            }
             group(Approval)
             {
                 Caption = 'Approval';

@@ -115,17 +115,18 @@ table 50004 "Customer Sub Contract Line"
             Caption = 'Subcontracts ID';
             DataClassification = ToBeClassified;
         }
+        field(17; "Line No."; Integer)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
     keys
     {
-        key(PK; "No.")
+        key(PK; "Type ", "Subcontracts ID", "Line No.")
         {
             Clustered = true;
         }
-        key(PK1; "Subcontracts ID")
-        {
 
-        }
     }
     var
         RecItem: record Item;

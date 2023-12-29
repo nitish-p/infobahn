@@ -13,7 +13,11 @@ page 50008 "Vendor Sub Contract"
             group(General)
             {
                 Caption = 'General';
-
+                field("Subcontracts ID"; Rec."Subcontracts ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Subcontracts ID field.';
+                }
                 field("Amend Versions"; Rec."Amend Versions")
                 {
                     ApplicationArea = All;
@@ -134,11 +138,7 @@ page 50008 "Vendor Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Status (Open, In Process, Executed) field.';
                 }
-                field("Subcontracts ID"; Rec."Subcontracts ID")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Subcontracts ID field.';
-                }
+
                 field("Subscription ID"; Rec."Subscription ID")
                 {
                     ApplicationArea = All;
@@ -157,7 +157,7 @@ page 50008 "Vendor Sub Contract"
             }
             part(Line; "Vendor Sub Contract Subform")
             {
-                SubPageLink = "Subcontracts ID" = field("Subcontracts ID");
+                SubPageLink = "Document No" = field("Subcontracts ID");
             }
 
         }
@@ -242,4 +242,5 @@ page 50008 "Vendor Sub Contract"
         }
 
     }
+
 }

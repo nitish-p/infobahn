@@ -3,7 +3,9 @@ page 50006 "Customer Sub Contract Subform"
     Caption = 'Customer Sub Contract Subform';
     PageType = ListPart;
     SourceTable = "Customer Sub Contract Line";
-    // ApplicationArea = all;
+    ApplicationArea = all;
+    AutoSplitKey = true;
+
 
 
     layout

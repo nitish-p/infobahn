@@ -5,6 +5,7 @@ table 50008 "Purchase Indent Line"
 
     fields
     {
+
         field(1; "Type"; enum PurchaseIndent_Types)
         {
             Caption = 'Type (Item, GL, Fixed Assets, Charges)';
@@ -52,27 +53,48 @@ table 50008 "Purchase Indent Line"
         {
             Caption = 'Customer Delivery Date (CDD)';
             DataClassification = ToBeClassified;
+            NotBlank = true;
         }
         field(7; "Expected Delivery Date (ADD)"; Date)
         {
-            Caption = 'Expected Delivery Date (ADD)';
+            Caption = 'Expected Delivery Date (EDD)';
             DataClassification = ToBeClassified;
+            NotBlank = true;
         }
         field(8; "Document No."; Code[20])
         {
             Caption = 'Document No.';
             DataClassification = ToBeClassified;
         }
-        field(9; "Location Code"; Code[20])
+        field(9; "Location Code"; Code[50])
         {
             Caption = 'Location Code';
-            DataClassification = ToBeClassified;
-            TableRelation = Location.Code;
+            // DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purchase Indent Header"."Location Code" where("PR No." = field("Document No.")));
+
         }
+        field(10; "Shortcut Dimension 1 Code"; Code[50])
+        {
+            Caption = 'Shortcut Dimension 1';
+            DataClassification = ToBeClassified;
+        }
+        field(11; "Shortcut Dimension 2 Code"; Code[50])
+        {
+            Caption = 'Shortcut Dimension 2';
+            DataClassification = ToBeClassified;
+        }
+        field(12; "Line No."; Integer)
+        {
+
+            DataClassification = ToBeClassified;
+        }
+
+
     }
     keys
     {
-        key(PK; "Document No.")
+        key(Key1; Type, "Document No.", "Line No.")
         {
             Clustered = true;
         }

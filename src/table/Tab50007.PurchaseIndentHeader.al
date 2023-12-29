@@ -9,9 +9,9 @@ table 50007 "Purchase Indent Header"
         {
             Caption = 'PR No.';
             DataClassification = ToBeClassified;
+            TableRelation = "No. Series";
             trigger OnValidate()
             var
-
             begin
                 if "PR No." <> xRec."PR No." then begin
                     GetPurchSetup();
@@ -105,11 +105,25 @@ table 50007 "Purchase Indent Header"
             Caption = 'Location Code';
             DataClassification = ToBeClassified;
             TableRelation = Location.Code;
+            trigger OnValidate()
+            var
+                myInt: Integer;
+                recPurchIndentLine: Record "Purchase Indent Line";
+
+            begin
+                recPurchIndentLine.Reset();
+                recPurchIndentLine.SetRange("Document No.", rec."PR No.");
+                if recPurchIndentLine.FindFirst() then begin
+                    recPurchIndentLine.CalcFields("Location Code");
+                end;
+
+            end;
+
         }
         field(17; "Shortcut Dimension 1 Code"; Code[20])
         {
             //  CaptionClass = '1,2,1';
-            Caption = 'Shortcut Dimension 1 Code';
+            Caption = 'Shortcut Dimension 1';
             DataClassification = ToBeClassified;
             // TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(1),
             //                                               Blocked = CONST(false));
@@ -119,7 +133,7 @@ table 50007 "Purchase Indent Header"
         field(18; "Shortcut Dimension 2 Code"; Code[20])
         {
             // CaptionClass = '1,2,2';
-            Caption = 'Shortcut Dimension 2 Code';
+            Caption = 'Shortcut Dimension 2';
             DataClassification = ToBeClassified;
             // TableRelation = "Dimension Value".Code WHERE("Global Dimension No." = CONST(2),
             //                                               Blocked = CONST(false));
@@ -141,9 +155,8 @@ table 50007 "Purchase Indent Header"
             DataClassification = ToBeClassified;
 
         }
-
-
     }
+
     keys
     {
         key(PK; "PR No.")
