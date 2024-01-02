@@ -29,6 +29,8 @@ page 50012 "Purchase Indent"
                 {
                     ToolTip = 'Specifies the value of the PR Date field.';
                     ApplicationArea = all;
+
+
                 }
                 field(" Customer No."; Rec." Customer No.")
                 {
@@ -268,6 +270,15 @@ page 50012 "Purchase Indent"
             }
         }
     }
+    trigger OnOpenPage()
+    var
+        myInt: Integer;
+        purchaseinde: Record "Purchase Indent Header";
+    begin
+        purchaseinde."PR Date" := WorkDate;
+
+    end;
+
     procedure CreatePurchaseQuote(var RecPurchIndentHeader1: Record "Purchase Indent Header"; var VendorCode: Code[20])
     var
         RecPH: record "Purchase Header";
@@ -335,7 +346,6 @@ page 50012 "Purchase Indent"
             MESSAGE('Purchase Quote No.: %1 Created Successfully...', RecPH."No.");
         END;
     end;
-
 
 
 }

@@ -25,6 +25,8 @@ table 50007 "Purchase Indent Header"
         {
             Caption = 'PR Date';
             DataClassification = ToBeClassified;
+
+
         }
         field(3; " Type of PR"; Enum PurchaseIndent_TypeofPR)
         {
@@ -173,6 +175,7 @@ table 50007 "Purchase Indent Header"
     var
         RecPurchAndPaySetup: Record "Purchases & Payables Setup";
         RecCompInfo: Record "Company Information";
+        CurrentDate: Date;
     //NoSeriesMgt: codeunit NoSeriesManagement;
     begin
         //RecPurchAndPaySetup.Get();
@@ -184,8 +187,12 @@ table 50007 "Purchase Indent Header"
         Rec."Posting Date" := Today;
         //Rec."Location Code" := RecCompInfo."Location Code";
 
-    end;
 
+        // CurrentDate := WORKDATE;
+        // "PR date" := CurrentDate;
+
+
+    end;
 
     trigger OnDelete()
     begin
@@ -233,6 +240,7 @@ table 50007 "Purchase Indent Header"
             if "PR No." = '' then begin
                 TestNoSeries();
                 NoSeriesMgt.InitSeries(GetNoSeriesCode, xRec."No. Series", "Posting Date", "PR No.", "No. Series");
+                // NoSeriesMgt.GetNextNo(rec."PR No.", "PR Date", true);
             end;
 
         OnInitInsertOnBeforeInitRecord(Rec, xRec);
@@ -250,7 +258,10 @@ table 50007 "Purchase Indent Header"
         if not IsHandled then
             NoSeriesMgt.SetDefaultSeries("Posting No. Series", PurchSetup."Purchase Indent Nos.");
         OnAfterInitRecord(Rec);
+        rec."PR Date" := WorkDate();
     end;
+
+
 
     [IntegrationEvent(false, false)]
     local procedure OnAfterGetNoSeriesCode(var PurchIndentHeader: Record "Purchase Indent Header"; PurchSetup: Record "Purchases & Payables Setup"; var NoSeriesCode: Code[20])
@@ -301,4 +312,6 @@ table 50007 "Purchase Indent Header"
     local procedure OnInitInsertOnBeforeInitRecord(var PurchasendentHeader: Record "Purchase Indent Header"; var xPurchaseIndentHeader: Record "Purchase Indent Header")
     begin
     end;
+
+
 }

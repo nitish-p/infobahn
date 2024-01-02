@@ -185,5 +185,7 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
             DataClassification = ToBeClassified;
         }
 
+
     }
+
 }

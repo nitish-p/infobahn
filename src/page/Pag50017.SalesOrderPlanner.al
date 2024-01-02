@@ -1858,29 +1858,78 @@ page 50017 "Sales Order Planner"
                     Caption = 'Create Purchase Indent';
                     ApplicationArea = all;
                     Image = CreateDocument;
+
                     RunObject = page 50012;
+                    //RunPageLink = " SO No." = field("No.");
+                    // Scope = Repeater;
+
 
 
                     trigger OnAction()
                     var
                         recPurchIndentHdr: Record "Purchase Indent Header";
                         SalesHeader: Record "Sales Header";
+                        NoSeriesMgt: codeunit NoSeriesManagement;
+                        RecPurchAndPaySetup: record "Purchases & Payables Setup";
+                        //RecPH: Recode "Purchase indent Header";
+                        PurchSetup: Record "Purchases & Payables Setup";
+
 
                     begin
-                        SalesHeader.reset();
-                        SalesHeader.SetRange("No.", rec."No.");
-                        if SalesHeader.FindFirst() then begin
-                            recPurchIndentHdr.SetRange("PR No.", recPurchIndentHdr."PR No.");
-                            if recPurchIndentHdr.FindFirst() then
-                                recPurchIndentHdr.Init();
-                            recPurchIndentHdr." SO No." := rec."No.";
-                            recPurchIndentHdr."Location Code" := rec."Location Code";
-                            recPurchIndentHdr.Insert();
-                        end;
+                        PurchSetup.get();
+                        // SalesHeader.reset();
+                        // SalesHeader.SetRange(SalesHeader."No.", rec."No.");
+                        // //Page.Run(Page::"Purchase Indent");
+                        // if SalesHeader.FindFirst() then begin
+                        //     recPurchIndentHdr.SetRange(recPurchIndentHdr."PR No.", recPurchIndentHdr."PR No.");
+                        //     if recPurchIndentHdr.FindFirst() then
+                        recPurchIndentHdr.Init();
+                        NoSeriesMgt.InitSeries(PurchSetup."Purchase Indent Nos.", recPurchIndentHdr."No. Series", recPurchIndentHdr."PR Date", recPurchIndentHdr."PR No.", recPurchIndentHdr."No. Series");
+                        recPurchIndentHdr." SO No." := rec."No.";
+                        recPurchIndentHdr."PR No." := recPurchIndentHdr."Reference Quote No.";
+                        recPurchIndentHdr."PR Date" := WorkDate;
+                        recPurchIndentHdr." SO date" := rec."Order Date";
+                        recPurchIndentHdr."Shortcut Dimension 1 Code" := rec."Shortcut Dimension 1 Code";
+                        recPurchIndentHdr."Shortcut Dimension 2 Code" := rec."Shortcut Dimension 2 Code";
+                        recPurchIndentHdr."Location Code" := rec."Location Code";
+                        recPurchIndentHdr." Customer No." := rec."Sell-to Customer No.";
+                        recPurchIndentHdr." Customer Name" := rec."Sell-to Customer Name";
+                        // Page.Run(Page::"Purchase Indent");
+                        //recPurchIndentHdr.Modify();
+                        recPurchIndentHdr.Insert();
 
 
 
                     end;
+
+
+
+                    // end;
+                    // RecPurchAndPaySetup.Get();
+                    // recPurchIndentHdr.Init();
+                    // recPurchIndentHdr.VALIDATE("PR No.", NoSeriesMgt.GetNextNo(RecPurchAndPaySetup."Purchase Indent Nos.", TODAY, TRUE));
+                    // recPurchIndentHdr." SO No." := rec."No.";
+                    // recPurchIndentHdr." SO date" := rec."Order Date";
+                    // recPurchIndentHdr."Shortcut Dimension 1 Code" := rec."Shortcut Dimension 1 Code";
+                    // recPurchIndentHdr."Shortcut Dimension 2 Code" := rec."Shortcut Dimension 2 Code";
+                    // recPurchIndentHdr."Location Code" := rec."Location Code";
+                    // recPurchIndentHdr." Customer No." := rec."Sell-to Customer No.";
+                    // recPurchIndentHdr." Customer Name" := rec."Sell-to Customer Name";
+                    // recPurchIndentHdr.VALIDATE(recPurchIndentHdr." SO date", SalesHeader."Order Date");//yash
+                    // recPurchIndentHdr.VALIDATE(recPurchIndentHdr." Customer No.", SalesHeader."Sell-to Customer No.");
+
+                    // recPurchIndentHdr.VALIDATE("Location Code", RecPurchIndentHdr."Location Code");
+                    // recPurchIndentHdr.Validate("Shortcut Dimension 1 Code", RecPurchIndentHdr."Shortcut Dimension 1 Code");
+                    // recPurchIndentHdr.Validate("Shortcut Dimension 2 Code", RecPurchIndentHdr."Shortcut Dimension 2 Code");
+                    // recPurchIndentHdr.Insert(True);
+
+                    // if recPurchIndentHdr.Modify(true) then begin
+                    //     Message('Created');
+                    // end;
+
+
+
+                    //end;
 
                 }
             }
