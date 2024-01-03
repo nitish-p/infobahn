@@ -77,12 +77,16 @@ table 50008 "Purchase Indent Line"
         field(10; "Shortcut Dimension 1 Code"; Code[50])
         {
             Caption = 'Shortcut Dimension 1';
-            DataClassification = ToBeClassified;
+            // DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purchase Indent Header"."Shortcut Dimension 1 Code" where("PR No." = field("Document No.")));
         }
         field(11; "Shortcut Dimension 2 Code"; Code[50])
         {
             Caption = 'Shortcut Dimension 2';
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = lookup("Purchase Indent Header"."Shortcut Dimension 2 Code" where("PR No." = field("Document No.")));
         }
         field(12; "Line No."; Integer)
         {

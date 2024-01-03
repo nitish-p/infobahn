@@ -62,12 +62,12 @@ page 50027 "Purchase Indent Subform"
                         myInt: Integer;
                         RecPurchaseIndentHeader: Record "Purchase Indent Header";
                     begin
-                        RecPurchaseIndentHeader.Reset();
-                        RecPurchaseIndentHeader.SetRange(RecPurchaseIndentHeader."PR No.", rec."Document No.");
-                        if RecPurchaseIndentHeader.FindFirst() then begin
-                            RecPurchaseIndentHeader."Shortcut Dimension 1 Code" := rec."Shortcut Dimension 1 Code";
-                            RecPurchaseIndentHeader."Shortcut Dimension 2 Code" := Rec."Shortcut Dimension 2 Code";
-                        end;
+                        // RecPurchaseIndentHeader.Reset(); //used flowfields on table
+                        // RecPurchaseIndentHeader.SetRange(RecPurchaseIndentHeader."PR No.", rec."Document No.");
+                        // if RecPurchaseIndentHeader.FindFirst() then begin
+                        //     RecPurchaseIndentHeader."Shortcut Dimension 1 Code" := rec."Shortcut Dimension 1 Code";
+                        //     RecPurchaseIndentHeader."Shortcut Dimension 2 Code" := Rec."Shortcut Dimension 2 Code";
+                        // end;
                     end;
                 }
                 field("Shortcut Dimension 1 Code"; Rec."Shortcut Dimension 1 Code")

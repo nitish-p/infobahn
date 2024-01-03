@@ -156,6 +156,7 @@ table 50007 "Purchase Indent Header"
         {
             DataClassification = ToBeClassified;
 
+
         }
     }
 

@@ -1859,7 +1859,7 @@ page 50017 "Sales Order Planner"
                     ApplicationArea = all;
                     Image = CreateDocument;
 
-                    RunObject = page 50012;
+                    //RunObject = page 50012;
                     //RunPageLink = " SO No." = field("No.");
                     // Scope = Repeater;
 
@@ -1884,9 +1884,9 @@ page 50017 "Sales Order Planner"
                         //     recPurchIndentHdr.SetRange(recPurchIndentHdr."PR No.", recPurchIndentHdr."PR No.");
                         //     if recPurchIndentHdr.FindFirst() then
                         recPurchIndentHdr.Init();
-                        NoSeriesMgt.InitSeries(PurchSetup."Purchase Indent Nos.", recPurchIndentHdr."No. Series", recPurchIndentHdr."PR Date", recPurchIndentHdr."PR No.", recPurchIndentHdr."No. Series");
+                        recPurchIndentHdr."PR No." := NoSeriesMgt.GetNextNo(PurchSetup."Purchase Indent Nos.", Today, true);
                         recPurchIndentHdr." SO No." := rec."No.";
-                        recPurchIndentHdr."PR No." := recPurchIndentHdr."Reference Quote No.";
+                        recPurchIndentHdr."Reference Quote No." := recPurchIndentHdr."PR No.";
                         recPurchIndentHdr."PR Date" := WorkDate;
                         recPurchIndentHdr." SO date" := rec."Order Date";
                         recPurchIndentHdr."Shortcut Dimension 1 Code" := rec."Shortcut Dimension 1 Code";
@@ -1894,9 +1894,11 @@ page 50017 "Sales Order Planner"
                         recPurchIndentHdr."Location Code" := rec."Location Code";
                         recPurchIndentHdr." Customer No." := rec."Sell-to Customer No.";
                         recPurchIndentHdr." Customer Name" := rec."Sell-to Customer Name";
-                        // Page.Run(Page::"Purchase Indent");
+                        recPurchIndentHdr."Posting Date" := WorkDate;
+
                         //recPurchIndentHdr.Modify();
                         recPurchIndentHdr.Insert();
+                        Page.Run(Page::"Purchase Indent", recPurchIndentHdr);
 
 
 
