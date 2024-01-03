@@ -6,6 +6,7 @@ page 50005 "Customer Sub Contract"
     UsageCategory = Administration;
     ApplicationArea = all;
     Editable = true;
+    DelayedInsert = false;
 
 
     layout
@@ -256,6 +257,87 @@ page 50005 "Customer Sub Contract"
                     Message('Updated!');
                 end;
 
+            }
+            Group(New)
+            {
+                Caption = 'Create Vendor Contract';
+                action("Create Vendor Contrcat")
+                {
+                    ApplicationArea = All;
+                    Image = CreateDocument;
+                    trigger OnAction()
+                    var
+                        myInt: Integer;
+                        recCustomerSubContractHdr: Record "Vendor Sub Contract Header";
+                        NoseriesMang: Codeunit NoSeriesManagement;
+                        recContract: Record "Master contract";
+                        SalesRecSetup: Record "Sales & Receivables Setup";
+                        recCustomerSubContractLine: Record "Customer Sub Contract Line";
+                        RecVendorSubContrcatLine: Record "Vendor Sub Contract Line";
+
+                    begin
+                        SalesRecSetup.get();
+                        recCustomerSubContractHdr.Init();
+                        recCustomerSubContractHdr."Subcontracts ID" := NoseriesMang.GetNextNo(SalesRecSetup."Vendor Subcontract Nos.", Today, true);
+                        recCustomerSubContractHdr."Contract ID" := rec."Contract ID";
+                        recCustomerSubContractHdr."Approval Status" := rec."Approval Status";
+                        recCustomerSubContractHdr."Billing Date" := rec."Billing Date";
+                        recCustomerSubContractHdr."Billing frequency" := rec."Billing frequency";
+                        recCustomerSubContractHdr."Commitment Period Start Date" := rec."Commitment Period Start Date";
+                        recCustomerSubContractHdr."Commitment Period End Date" := rec."Commitment Period End Date";
+                        recCustomerSubContractHdr."Contract Signed" := rec."Contract Signed";
+                        recCustomerSubContractHdr."Contract Type" := rec."Contract Type";
+                        recCustomerSubContractHdr."Contract period" := Format(rec."Contract period");
+                        recCustomerSubContractHdr."Creation Date time" := rec."Creation Date time";
+                        // recCustomerSubContractHdr.Customer := rec."Customer";
+                        // recCustomerSubContractHdr."Customer PO No." := rec."Customer PO No.";
+                        recCustomerSubContractHdr."End Date" := rec."End Date";
+                        recCustomerSubContractHdr."Exit Clause Date" := rec."Exit Clause Date";
+                        recCustomerSubContractHdr."Exit Clause Remarks" := rec."Exit Clause Remarks";
+                        recCustomerSubContractHdr."Modify Date Time" := rec."Modify Date Time";
+                        recCustomerSubContractHdr.Narration := rec.Narration;
+                        recCustomerSubContractHdr."Service Type" := rec."Service Type";
+                        recCustomerSubContractHdr."Start Date" := rec."Start Date";
+                        recCustomerSubContractHdr.Insert();
+                        Page.Run(Page::"Vendor Sub Contract", recCustomerSubContractHdr);
+                        //         IF recCustomerSubContractHdr.MODIFY(TRUE) THEN BEGIN
+                        //             LineNo := 10000;
+                        //             RecVendorSubContrcatLine.RESET;
+                        //             RecVendorSubContrcatLine.SETRANGE(RecVendorSubContrcatLine."Subcontracts ID", recCustomerSubContractHdr."Subcontracts ID");
+                        //             IF RecVendorSubContrcatLine.FINDSET THEN
+                        //                 REPEAT
+
+                        //                     RecVendorSubContrcatLine.INIT;
+                        //                     RecVendorSubContrcatLine."Document Type" := RecVendorSubContrcatLine."Document Type"::Quote;
+                        //                     RecVendorSubContrcatLine."Document No." := RecVendorSubContrcatLine."No.";
+
+                        //                     if RecPurchIndentLine.Type = RecPurchIndentLine.Type::Item then
+                        //                         RecPL.Type := RecPL.Type::Item
+                        //                     else
+                        //                         if RecPurchIndentLine.Type = RecPurchIndentLine.Type::"Fixed Assets" then
+                        //                             RecPL.Type := RecPL.Type::"Fixed Asset"
+                        //                         else
+                        //                             if RecPurchIndentLine.Type = RecPurchIndentLine.Type::GL then
+                        //                                 RecPL.Type := RecPL.Type::"G/L Account"
+                        //                             else
+                        //                                 if RecPurchIndentLine.Type = RecPurchIndentLine.Type::Charges then
+                        //                                     RecPL.Type := RecPL.Type::"Charge (Item)";
+
+
+                        //                     RecPL."Line No." := LineNo;
+                        //                     RecPL.VALIDATE(RecPL."No.", RecPurchIndentLine."No.");
+                        //                     RecPL.VALIDATE(RecPL.Quantity, RecPurchIndentLine.Quantity);
+                        //                     // RecPL.Validate("Shortcut Dimension 1 Code", RecPurchIndentLine."Shortcut Dimension 1 Code");
+                        //                     // RecPL.Validate("Shortcut Dimension 2 Code", RecPurchIndentLine."Shortcut Dimension 2 Code");
+                        //                     //RecPL.VALIDATE(RecPL."Qty. to Invoice", RecPL1.Quantity);
+                        //                     //RecPL.VALIDATE(RecPL."Direct Unit Cost", 0);
+
+                        //                     RecPL.INSERT;
+                        //                     LineNo += 10000;
+
+                        //                 UNTIL RecPurchIndentLine.NEXT = 0;
+                    end;
+                }
             }
 
 

@@ -6,18 +6,18 @@ enum 50022 "MainContract_ApprovalStatus"
     {
         Caption = ' ';
     }
-    value(1; open)
+    value(1; Open)
     {
         Caption = 'Open';
     }
-    value(2; "pending for approval")
+    value(2; "Pending for approval")
     {
-        Caption = 'pending for approval';
+        Caption = 'Pending for Approval';
     }
-    value(3; "approved")
+    value(3; "Approved")
     {
-        Caption = 'pending for approval';
+        Caption = 'Approved';
     }
-    value(4; cancle) { }
+    value(4; Cancel) { }
 }
 

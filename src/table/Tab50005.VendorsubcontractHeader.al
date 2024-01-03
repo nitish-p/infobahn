@@ -3,11 +3,13 @@ table 50005 "Vendor sub contract Header"
     Caption = 'Vendor sub contract';
     DataClassification = ToBeClassified;
 
+
+
     fields
     {
         field(1; "Subcontracts ID"; Code[50])
         {
-            Caption = 'Vendor Subcontracts ID';
+            Caption = 'Vendor Contracts ID';
             DataClassification = ToBeClassified;
         }
         field(2; "Contract ID"; Code[50])
@@ -112,7 +114,7 @@ table 50005 "Vendor sub contract Header"
         }
         field(19; "Status (Open, In Process, Executed)"; enum VendorSubCon_Status)
         {
-            Caption = 'Status (Open, In Process, Executed)';
+            Caption = 'Status';
             DataClassification = ToBeClassified;
         }
 
@@ -170,4 +172,17 @@ table 50005 "Vendor sub contract Header"
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    var
+        myInt: Integer;
+        NoseriesManagment: Codeunit NoSeriesManagement;
+        SalesRecSetup: Record "Sales & Receivables Setup";
+
+    begin
+        if Rec."Subcontracts ID" = '' then begin
+            SalesRecSetup.Get();
+            "Subcontracts ID" := NoseriesManagment.GetNextNo(SalesRecSetup."Vendor Subcontract Nos.", WorkDate, true);
+        end;
+
+    end;
 }

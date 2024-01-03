@@ -30,29 +30,29 @@ table 50007 "Purchase Indent Header"
         }
         field(3; " Type of PR"; Enum PurchaseIndent_TypeofPR)
         {
-            Caption = ' Type of PR';
+            Caption = 'Type of PR';
             DataClassification = ToBeClassified;
         }
         field(4; " SO No."; Code[50])
         {
-            Caption = ' SO No.';
+            Caption = 'SO No.';
             DataClassification = ToBeClassified;
         }
         field(5; " SO date"; Date)
         {
-            Caption = ' SO date';
+            Caption = 'SO date';
             DataClassification = ToBeClassified;
         }
         field(6; " Customer No."; Code[20])
         {
-            Caption = ' Customer No.';
+            Caption = 'Customer No.';
             DataClassification = ToBeClassified;
             TableRelation = Customer."No.";
 
         }
         field(7; " Customer Name"; Text[100])
         {
-            Caption = ' Customer Name';
+            Caption = 'Customer Name';
             DataClassification = ToBeClassified;
 
         }

@@ -1,14 +1,15 @@
 table 50002 "Master contract"
 {
-    Caption = 'Master contract';
+    Caption = 'Master Contract';
     DataClassification = ToBeClassified;
 
     fields
     {
-        field(1; "Contract ID"; Text[100])
+        field(1; "Contract ID"; Code[20])
         {
             Caption = 'Contract ID';
             DataClassification = ToBeClassified;
+            TableRelation = "No. Series";
         }
         field(2; "Start Date"; Date)
         {
@@ -37,7 +38,7 @@ table 50002 "Master contract"
         }
         field(7; "Contract Type (One time, Flex)"; enum ContractMain_ContractType)
         {
-            Caption = 'Contract Type (One time, Flex)';
+            Caption = 'Contract Type';
             DataClassification = ToBeClassified;
         }
         field(8; "Commitment Period Start Date"; Date)
@@ -82,7 +83,7 @@ table 50002 "Master contract"
         }
         field(16; "Status (Open, In Process, Executed)"; enum MainContract_Status)
         {
-            Caption = 'Status (Open, In Process, Executed)';
+            Caption = 'Status';
             DataClassification = ToBeClassified;
         }
         // field(17; "Attachment Option"; Boolean)
@@ -104,6 +105,7 @@ table 50002 "Master contract"
         {
             Caption = 'Approval Status';
             DataClassification = ToBeClassified;
+            // OptionMembers = "open","pending for approval","approved","cancle";
         }
         field(21; "Creation Date time"; Date)
         {
@@ -119,13 +121,13 @@ table 50002 "Master contract"
         {
             Caption = 'BU Head';
             DataClassification = ToBeClassified;
-            TableRelation = "Salesperson/Purchaser".Name;
+            TableRelation = "Salesperson/Purchaser";
         }
         field(24; Salesperson; code[50])
         {
             Caption = 'Salesperson';
             DataClassification = ToBeClassified;
-            TableRelation = "Salesperson/Purchaser".Name;
+            TableRelation = "Salesperson/Purchaser";
         }
         field(25; "Customer Code"; Code[50])
         {
@@ -137,18 +139,23 @@ table 50002 "Master contract"
                 myInt: Integer;
                 Customer: Record Customer;
             begin
-                CalcFields("Customer Name");
+                // CalcFields("Customer Name");
 
             end;
         }
         field(26; "Customer Name"; Text[100])
         {
             Caption = 'Customer Name';
-            //DataClassification = ToBeClassified;
-            FieldClass = FlowField;
-            CalcFormula = lookup(Customer.Name where("No." = field("Customer Code")));
+            DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup(Customer.Name where("No." = field("Customer Code")));
         }
         field(27; "Customer PO No."; Text[100])
+        {
+            Caption = 'Customer PO No.';
+            DataClassification = ToBeClassified;
+        }
+        field(28; "No. Series"; Text[100])
         {
             Caption = 'Customer PO No.';
             DataClassification = ToBeClassified;
@@ -156,11 +163,25 @@ table 50002 "Master contract"
 
 
     }
-    // keys
-    // {
-    //     key(PK; "Contract ID")
-    //     {
-    //         Clustered = true;
-    //     }
-    // }
+    keys
+    {
+        key(PK; "Contract ID")
+        {
+            Clustered = true;
+        }
+    }
+    trigger OnInsert()
+    var
+        myInt: Integer;
+        NoseriesManagment: Codeunit NoSeriesManagement;
+        SalesRecSetup: Record "Sales & Receivables Setup";
+
+    begin
+
+        if Rec."Contract ID" = '' then begin
+            SalesRecSetup.Get();
+            "Contract ID" := NoseriesManagment.GetNextNo(SalesRecSetup."Contract Nos.", WorkDate, true);
+        end;
+
+    end;
 }

@@ -1,7 +1,7 @@
 enum 50029 "CustomerSubContract_Status"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = ' ';
@@ -19,3 +19,4 @@ enum 50029 "CustomerSubContract_Status"
         Caption = 'Executed';
     }
 }
+

@@ -156,11 +156,11 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
             DataClassification = ToBeClassified;
             TableRelation = "Salesperson/Purchaser";
         }
-        field(50025; "Hand Delivery Person Mobile"; text[50])
+        field(50025; "Hand Delivery Person Mobile"; code[50])
         {
             Caption = 'Hand Delivery Person Mobile';
             DataClassification = ToBeClassified;
-            TableRelation = "Salesperson/Purchaser";
+            // TableRelation = "Salesperson/Purchaser";
         }
         field(50026; "Warehouse Pick up Person Name"; code[50])
         {

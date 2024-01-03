@@ -5,6 +5,7 @@ page 50008 "Vendor Sub Contract"
     SourceTable = "Vendor sub contract Header";
     ApplicationArea = all;
     UsageCategory = Administration;
+    DelayedInsert = false;
 
     layout
     {

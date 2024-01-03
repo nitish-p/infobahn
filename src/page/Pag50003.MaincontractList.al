@@ -1,7 +1,7 @@
 page 50003 "Main contract List"
 {
     ApplicationArea = All;
-    Caption = 'Master contract List';
+    Caption = 'Master Contract List';
     PageType = List;
     SourceTable = "Master contract";
     UsageCategory = Lists;
@@ -13,6 +13,11 @@ page 50003 "Main contract List"
         {
             repeater(General)
             {
+                field("Contract ID"; Rec."Contract ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Contract ID field.';
+                }
                 field("Approval Status"; Rec."Approval Status")
                 {
                     ApplicationArea = All;
@@ -58,11 +63,7 @@ page 50003 "Main contract List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Commitment Period Start Date field.';
                 }
-                field("Contract ID"; Rec."Contract ID")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Contract ID field.';
-                }
+
                 field("Contract Signed"; Rec."Contract Signed")
                 {
                     ApplicationArea = All;

@@ -8,7 +8,7 @@ table 50008 "Purchase Indent Line"
 
         field(1; "Type"; enum PurchaseIndent_Types)
         {
-            Caption = 'Type (Item, GL, Fixed Assets, Charges)';
+            Caption = 'Type';
             DataClassification = ToBeClassified;
 
         }

@@ -30,12 +30,12 @@ tableextension 50006 SalesLineExt extends "Sales Line"
         }
         field(50005; Mrgin; Decimal)
         {
-            Caption = 'Mrgin';
+            Caption = 'Margin';
             DataClassification = ToBeClassified;
         }
         field(50006; "Mrgin %"; Decimal)
         {
-            Caption = 'Mrgin %';
+            Caption = 'Margin %';
             DataClassification = ToBeClassified;
         }
         field(50007; "Customer Contract"; Code[50])
@@ -70,7 +70,7 @@ tableextension 50006 SalesLineExt extends "Sales Line"
         }
         field(50013; Breath; Code[50])
         {
-            Caption = 'Breath';
+            Caption = 'Breadth';
             DataClassification = ToBeClassified;
         }
         field(50014; "Customer Delivery Date"; Date)

@@ -1,7 +1,7 @@
 enum 50027 "CustomerSubContract_ContractType"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = ' ';
@@ -19,3 +19,4 @@ enum 50027 "CustomerSubContract_ContractType"
         Caption = 'fixed+ variable';
     }
 }
+

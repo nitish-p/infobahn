@@ -1,8 +1,10 @@
 page 50004 "Main contract card"
 {
-    Caption = 'Master contract card';
+    Caption = 'Master Contract';
     PageType = Card;
     SourceTable = "Master contract";
+    ApplicationArea = all;
+    DelayedInsert = false;
 
 
     layout
@@ -12,6 +14,11 @@ page 50004 "Main contract card"
             group(General)
             {
                 Caption = 'General';
+                field("Contract ID"; Rec."Contract ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Contract ID field.';
+                }
 
                 field("Approval Status"; Rec."Approval Status")
                 {
@@ -53,11 +60,7 @@ page 50004 "Main contract card"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Commitment Period Start Date field.';
                 }
-                field("Contract ID"; Rec."Contract ID")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Contract ID field.';
-                }
+
                 field("Contract Signed"; Rec."Contract Signed")
                 {
                     ApplicationArea = All;
@@ -82,6 +85,18 @@ page 50004 "Main contract card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Customer Code field.';
+                    trigger OnValidate()
+                    var
+                        myInt: Integer;
+                        recCustomer: Record Customer;
+                    begin
+                        recCustomer.Reset();
+                        recCustomer.SetRange("No.", rec."Customer Code");
+                        if recCustomer.findfirst() then begin
+                            rec."Customer Name" := recCustomer.Name;
+                        end;
+
+                    end;
                 }
                 field("Customer Name"; Rec."Customer Name")
                 {
@@ -143,8 +158,10 @@ page 50004 "Main contract card"
     }
     actions
     {
+
         area(Processing)
         {
+
             action("Attachment Option")
             {
                 ApplicationArea = all;
@@ -279,11 +296,49 @@ page 50004 "Main contract card"
                 end;
 
             }
+            Group(New)
+            {
+                Caption = 'Create Customer Contract';
+                action("Create Customer Contrcat")
+                {
+                    ApplicationArea = All;
+                    Image = CreateDocument;
+                    trigger OnAction()
+                    var
+                        myInt: Integer;
+                        recCustomerSubContractHdr: Record "Customer Sub Contract Header";
+                        NoseriesMang: Codeunit NoSeriesManagement;
+                        recContract: Record "Master contract";
+                        SalesRecSetup: Record "Sales & Receivables Setup";
 
-
-
-
+                    begin
+                        SalesRecSetup.get();
+                        recCustomerSubContractHdr.Init();
+                        recCustomerSubContractHdr."Subcontracts ID" := NoseriesMang.GetNextNo(SalesRecSetup."Customer Subcontract Nos.", Today, true);
+                        recCustomerSubContractHdr."Contract ID" := rec."Contract ID";
+                        recCustomerSubContractHdr."Approval Status" := rec."Approval Status";
+                        recCustomerSubContractHdr."Billing Date" := rec."Billing Date";
+                        recCustomerSubContractHdr."Billing frequency" := rec."Billing frequency";
+                        recCustomerSubContractHdr."Commitment Period Start Date" := rec."Commitment Period Start Date";
+                        recCustomerSubContractHdr."Commitment Period End Date" := rec."Commitment Period End Date";
+                        recCustomerSubContractHdr."Contract Signed" := rec."Contract Signed";
+                        recCustomerSubContractHdr."Contract Type" := rec."Contract Type (One time, Flex)";
+                        recCustomerSubContractHdr."Contract period" := Format(rec."Contract period");
+                        recCustomerSubContractHdr."Creation Date time" := rec."Creation Date time";
+                        recCustomerSubContractHdr.Customer := rec."Customer Code";
+                        recCustomerSubContractHdr."Customer PO No." := rec."Customer PO No.";
+                        recCustomerSubContractHdr."End Date" := rec."End Date";
+                        recCustomerSubContractHdr."Exit Clause Date" := rec."Exit Clause Date";
+                        recCustomerSubContractHdr."Exit Clause Remarks" := rec."Exit Clause Remarks";
+                        recCustomerSubContractHdr."Modify Date Time" := rec."Modify Date Time";
+                        recCustomerSubContractHdr.Narration := rec.Narration;
+                        recCustomerSubContractHdr."Service Type" := rec."Service Type";
+                        recCustomerSubContractHdr."Start Date" := rec."Start Date";
+                        recCustomerSubContractHdr.Insert();
+                        Page.Run(Page::"Customer Sub Contract", recCustomerSubContractHdr);
+                    end;
+                }
+            }
         }
-
     }
 }

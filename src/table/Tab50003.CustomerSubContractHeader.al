@@ -8,7 +8,7 @@ table 50003 "Customer Sub Contract Header"
     {
         field(1; "Subcontracts ID"; Code[50])
         {
-            Caption = 'Customer Subcontracts ID';
+            Caption = 'Customer Contracts ID';
             DataClassification = ToBeClassified;
         }
         field(2; "Contract ID"; code[50])
@@ -31,15 +31,17 @@ table 50003 "Customer Sub Contract Header"
             Caption = 'Contract period';
             DataClassification = ToBeClassified;
         }
-        field(6; "Service Type"; enum CustomerSubContract_ServiceType)
+        field(6; "Service Type"; Option)//enum CustomerSubContract_ServiceType)
         {
             Caption = 'Service Type';
             DataClassification = ToBeClassified;
+            OptionMembers = " ",MPS,AMP,Rentals,Subscriptions,"As a service",GreenLake,FMS,CMS,"Internal";
         }
-        field(7; "Contract Type"; enum CustomerSubContract_ContractType)
+        field(7; "Contract Type"; Option)//enum CustomerSubContract_ContractType)
         {
             Caption = 'Contract Type';
             DataClassification = ToBeClassified;
+            OptionMembers = " ","Fixed",Variable,"Fixed+variable";
         }
         field(8; "Commitment Period Start Date"; Date)
         {
@@ -51,10 +53,11 @@ table 50003 "Customer Sub Contract Header"
             Caption = 'Commitment Period End Date';
             DataClassification = ToBeClassified;
         }
-        field(10; "Billing frequency"; enum CustomerSubContract_Billingfrequency)
+        field(10; "Billing frequency"; Option)//enum CustomerSubContract_Billingfrequency)
         {
             Caption = 'Billing frequency';
             DataClassification = ToBeClassified;
+            OptionMembers = " ",Anualy,monthly,quarterly,"Half Yearly";
         }
         field(11; "Billing Date"; Date)
         {
@@ -99,10 +102,11 @@ table 50003 "Customer Sub Contract Header"
             Caption = 'Contract Signed';
             DataClassification = ToBeClassified;
         }
-        field(19; "Status (Open, In Process, Executed)"; enum CustomerSubContract_Status)
+        field(19; "Status (Open, In Process, Executed)"; Option)//enum CustomerSubContract_Status)
         {
-            Caption = 'Status (Open, In Process, Executed)';
+            Caption = 'Status';
             DataClassification = ToBeClassified;
+            OptionMembers = " ",Open,"In Process",Executed;
         }
         field(20; "Customer PO No."; code[50])
         {
@@ -115,10 +119,11 @@ table 50003 "Customer Sub Contract Header"
 
             DataClassification = ToBeClassified;
         }
-        field(22; "Approval Status"; enum CusSubContract_ApprovalStatus)
+        field(22; "Approval Status"; Option)//enum CusSubContract_ApprovalStatus)
         {
 
             DataClassification = ToBeClassified;
+            OptionMembers = " ","Open","Pending for Approval","Approved","Cancel";
         }
         field(23; "Creation Date time"; date)
         {
@@ -182,4 +187,18 @@ table 50003 "Customer Sub Contract Header"
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    var
+        myInt: Integer;
+        NoseriesManagment: Codeunit NoSeriesManagement;
+        SalesRecSetup: Record "Sales & Receivables Setup";
+
+    begin
+
+        if Rec."Subcontracts ID" = '' then begin
+            SalesRecSetup.Get();
+            "Subcontracts ID" := NoseriesManagment.GetNextNo(SalesRecSetup."Customer Subcontract Nos.", WorkDate, true);
+        end;
+
+    end;
 }
