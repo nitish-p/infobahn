@@ -18,9 +18,9 @@ tableextension 50004 BOMComponentExt extends "BOM Component"
             Caption = 'Customer Qty';
             DataClassification = ToBeClassified;
         }
-        field(50004; "Component Type (Component or By Product)"; enum BOM_ComponentType)
+        field(50004; "Component Type"; enum BOM_ComponentType)
         {
-            Caption = 'Component Type (Component or By Product)';
+            Caption = 'Component Type';
             DataClassification = ToBeClassified;
         }
         field(50005; Integration; Boolean)

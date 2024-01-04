@@ -1873,9 +1873,15 @@ page 50017 "Sales Order Planner"
                         RecPurchAndPaySetup: record "Purchases & Payables Setup";
                         //RecPH: Recode "Purchase indent Header";
                         PurchSetup: Record "Purchases & Payables Setup";
+                        LineNo: Integer;
+                        PurchaseIndentLine: Record "Purchase Indent Line";
+                        SalesLine: Record "Sales Line";
 
 
                     begin
+                        // if SalesHeader."No." = recPurchIndentHdr." SO No." then begin
+                        //     Error('Purchase Indent Already Create');
+                        // end;
                         PurchSetup.get();
                         // SalesHeader.reset();
                         // SalesHeader.SetRange(SalesHeader."No.", rec."No.");
@@ -1897,10 +1903,48 @@ page 50017 "Sales Order Planner"
                         recPurchIndentHdr."Posting Date" := WorkDate;
 
                         //recPurchIndentHdr.Modify();
-                        recPurchIndentHdr.Insert();
+                        recPurchIndentHdr.Insert(True);
+                        IF recPurchIndentHdr.MODIFY(TRUE) THEN BEGIN
+                            LineNo := 10000;
+                            SalesLine.RESET();
+                            SalesLine.SETRANGE(SalesLine."Document No.", rec."No.");
+                            IF SalesLine.FINDSET THEN
+                                REPEAT
+
+                                    PurchaseIndentLine.INIT;
+                                    //RecVendorSubContrcatLine."Document Type" := RecVendorSubContrcatLine."Document Type"::Quote;
+                                    PurchaseIndentLine."Document No." := recPurchIndentHdr."PR No.";
+                                    // PurchaseIndentLine."Subcontracts ID" := recVendorSubContractHdr."Subcontracts ID";
+                                    if SalesLine.Type = salesLine.type::Item then
+                                        PurchaseIndentLine.Type := PurchaseIndentLine.Type::Item
+                                    else
+                                        if SalesLine.Type = salesLine.type::"G/L Account" then
+                                            PurchaseIndentLine.Type := PurchaseIndentLine.Type::GL
+                                        else
+                                            if SalesLine.Type = salesLine.type::"Fixed Asset" then
+                                                PurchaseIndentLine.Type := PurchaseIndentLine.Type::"Fixed Assets"
+                                            else
+                                                if SalesLine.Type = salesLine.type::"Charge (Item)" then
+                                                    PurchaseIndentLine.Type := PurchaseIndentLine.Type::Charges;
+
+                                    PurchaseIndentLine."Line No." := LineNo;
+                                    //Message('Inserting Line No: ', RecVendorSubContrcatLine."Line No.");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine."No.", SalesLine."No.");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine.Quantity, SalesLine.Quantity);
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine.Amount, SalesLine."Line Amount");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine."Location Code", SalesLine."Location Code");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine."Shortcut Dimension 2 Code", SalesLine."Shortcut Dimension 1 Code");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine."Shortcut Dimension 2 Code", SalesLine."Shortcut Dimension 2 Code");
+
+
+
+
+                                    PurchaseIndentLine.Insert(True);
+                                    LineNo += 10000;
+
+                                UNTIL SalesLine.NEXT = 0;
+                        end;
                         Page.Run(Page::"Purchase Indent", recPurchIndentHdr);
-
-
 
                     end;
 

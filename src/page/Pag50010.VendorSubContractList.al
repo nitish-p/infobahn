@@ -1,7 +1,7 @@
 page 50010 "Vendor Sub Contract List"
 {
     ApplicationArea = All;
-    Caption = 'Vendor Sub Contract List';
+    Caption = 'Vendor Sub Contract';
     PageType = List;
     SourceTable = "Vendor sub contract Header";
     UsageCategory = Lists;

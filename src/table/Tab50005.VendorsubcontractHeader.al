@@ -163,6 +163,11 @@ table 50005 "Vendor sub contract Header"
             Caption = 'Branch Code';
             DataClassification = ToBeClassified;
         }
+        field(29; "Customer Contract ID"; code[20])
+        {
+            Caption = 'Customer Contract ID';
+            DataClassification = ToBeClassified;
+        }
 
     }
     keys

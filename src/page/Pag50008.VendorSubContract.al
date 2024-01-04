@@ -19,6 +19,15 @@ page 50008 "Vendor Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Subcontracts ID field.';
                 }
+                field("Contract ID"; Rec."Contract ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Contract ID field.';
+                }
+                field("Customer Contract ID"; Rec."Customer Contract ID")
+                {
+                    ApplicationArea = all;
+                }
                 field("Amend Versions"; Rec."Amend Versions")
                 {
                     ApplicationArea = All;
@@ -54,11 +63,7 @@ page 50008 "Vendor Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Commitment Period Start Date field.';
                 }
-                field("Contract ID"; Rec."Contract ID")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Contract ID field.';
-                }
+
                 field("Contract Signed"; Rec."Contract Signed")
                 {
                     ApplicationArea = All;
@@ -109,6 +114,11 @@ page 50008 "Vendor Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Narration field.';
                 }
+                field(Vendor; Rec.Vendor)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Vendor field.';
+                }
                 field("Order Address"; Rec."Order Address")
                 {
                     ApplicationArea = All;
@@ -150,11 +160,7 @@ page 50008 "Vendor Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Tenant ID field.';
                 }
-                field(Vendor; Rec.Vendor)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Vendor field.';
-                }
+
             }
             part(Line; "Vendor Sub Contract Subform")
             {
@@ -237,10 +243,76 @@ page 50008 "Vendor Sub Contract"
                 end;
 
             }
+            group(new)
+            {
+                action("Create Purchase Indent")
+                {
+                    ApplicationArea = All;
+                    Image = CreateDocument;
+                    trigger OnAction()
+                    var
+                        myInt: Integer;
+                        VendorContractHdr: Record "Vendor sub contract Header";
+                        VendorContrcatLine: Record "Vendor Sub Contract Line";
+                        PurchIndentHdr: Record "Purchase Indent Header";
+                        PurchaseIndentLine: Record "Purchase Indent Line";
+                        purchsetup: record "Purchases & Payables Setup";
+                        LineNo: Integer;
+                        NoserieMang: Codeunit NoSeriesManagement;
+                    begin
+                        purchsetup.Get();
+                        PurchIndentHdr.Init();
+                        PurchIndentHdr."PR No." := NoserieMang.GetNextNo(purchsetup."Purchase Indent Nos.", Today, true);
+                        PurchIndentHdr."Location Code" := rec.Location;
+                        PurchIndentHdr.Insert(true);
+                        if PurchIndentHdr.Modify(True) then begin
+                            LineNo := 10000;
+                            VendorContrcatLine.RESET();
+                            VendorContrcatLine.SETRANGE(VendorContrcatLine."Document No", rec."Subcontracts ID");
+                            IF VendorContrcatLine.FINDSET THEN
+                                REPEAT
+
+                                    PurchaseIndentLine.INIT;
+                                    //RecVendorSubContrcatLine."Document Type" := RecVendorSubContrcatLine."Document Type"::Quote;
+                                    PurchaseIndentLine."Document No." := PurchIndentHdr."PR No.";
+                                    // PurchaseIndentLine."Subcontracts ID" := recVendorSubContractHdr."Subcontracts ID";
+                                    if VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)" = VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)"::Item then
+                                        PurchaseIndentLine.Type := PurchaseIndentLine.Type::Item
+                                    else
+                                        if VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)" = VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)"::GL then
+                                            PurchaseIndentLine.Type := PurchaseIndentLine.Type::GL
+                                        else
+                                            if VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)" = VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)"::FA then
+                                                PurchaseIndentLine.Type := PurchaseIndentLine.Type::"Fixed Assets"
+                                            else
+                                                if VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)" = VendorContrcatLine."Type (GL, Item, FA, Resources, Charges)"::Charges then
+                                                    PurchaseIndentLine.Type := PurchaseIndentLine.Type::Charges;
+
+                                    PurchaseIndentLine."Line No." := LineNo;
+                                    //Message('Inserting Line No: ', RecVendorSubContrcatLine."Line No.");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine."No.", VendorContrcatLine."No.");
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine.Quantity, VendorContrcatLine.Quantity);
+
+                                    PurchaseIndentLine.VALIDATE(PurchaseIndentLine."Location Code", VendorContrcatLine.Location);
+                                    // PurchaseIndentLine.VALIDATE(PurchaseIndentLine."Shortcut Dimension 2 Code", VendorContrcatLine."Shortcut Dimension 1 Code");
+                                    // PurchaseIndentLine.VALIDATE(PurchaseIndentLine."Shortcut Dimension 2 Code", VendorContrcatLine."Shortcut Dimension 2 Code");
 
 
 
+
+                                    PurchaseIndentLine.Insert(True);
+                                    LineNo += 10000;
+
+                                UNTIL VendorContrcatLine.NEXT = 0;
+                            Page.Run(Page::"Purchase Indent", PurchIndentHdr);
+
+                        end;
+
+                    end;
+                }
+            }
         }
+
 
     }
 

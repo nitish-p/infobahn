@@ -89,10 +89,10 @@ page 50006 "Customer Sub Contract Subform"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the End Date field.';
                 }
-                field("Subcontracts ID"; Rec."Subcontracts ID")
+                field("Customer Contract ID"; Rec."Customer Contract ID")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Subcontracts ID field.';
+                    ToolTip = 'Specifies the value of the Customer Contract ID field.';
                 }
             }
         }

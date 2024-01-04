@@ -110,9 +110,9 @@ table 50004 "Customer Sub Contract Line"
             Caption = 'End Date';
             DataClassification = ToBeClassified;
         }
-        field(16; "Subcontracts ID"; Code[50])
+        field(16; "Customer Contract ID"; Code[50])
         {
-            Caption = 'Subcontracts ID';
+            Caption = 'Customer Contract ID';
             DataClassification = ToBeClassified;
         }
         field(17; "Line No."; Integer)
@@ -122,7 +122,7 @@ table 50004 "Customer Sub Contract Line"
     }
     keys
     {
-        key(PK; "Type ", "Subcontracts ID", "Line No.")
+        key(PK; "Type ", "Customer Contract ID", "Line No.")
         {
             Clustered = true;
         }

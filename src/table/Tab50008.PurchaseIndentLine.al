@@ -51,13 +51,13 @@ table 50008 "Purchase Indent Line"
         }
         field(6; "Customer Delivery Date (CDD)"; Date)
         {
-            Caption = 'Customer Delivery Date (CDD)';
+            Caption = 'Customer Delivery Date';
             DataClassification = ToBeClassified;
             NotBlank = true;
         }
         field(7; "Expected Delivery Date (ADD)"; Date)
         {
-            Caption = 'Expected Delivery Date (EDD)';
+            Caption = 'Expected Delivery Date';
             DataClassification = ToBeClassified;
             NotBlank = true;
         }
@@ -69,24 +69,24 @@ table 50008 "Purchase Indent Line"
         field(9; "Location Code"; Code[50])
         {
             Caption = 'Location Code';
-            // DataClassification = ToBeClassified;
-            FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Indent Header"."Location Code" where("PR No." = field("Document No.")));
+            DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup("Purchase Indent Header"."Location Code" where("PR No." = field("Document No.")));
 
         }
         field(10; "Shortcut Dimension 1 Code"; Code[50])
         {
             Caption = 'Shortcut Dimension 1';
-            // DataClassification = ToBeClassified;
-            FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Indent Header"."Shortcut Dimension 1 Code" where("PR No." = field("Document No.")));
+            DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup("Purchase Indent Header"."Shortcut Dimension 1 Code" where("PR No." = field("Document No.")));
         }
         field(11; "Shortcut Dimension 2 Code"; Code[50])
         {
             Caption = 'Shortcut Dimension 2';
-            //DataClassification = ToBeClassified;
-            FieldClass = FlowField;
-            CalcFormula = lookup("Purchase Indent Header"."Shortcut Dimension 2 Code" where("PR No." = field("Document No.")));
+            DataClassification = ToBeClassified;
+            // FieldClass = FlowField;
+            // CalcFormula = lookup("Purchase Indent Header"."Shortcut Dimension 2 Code" where("PR No." = field("Document No.")));
         }
         field(12; "Line No."; Integer)
         {

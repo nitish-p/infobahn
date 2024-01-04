@@ -160,7 +160,7 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         {
             Caption = 'Hand Delivery Person Mobile';
             DataClassification = ToBeClassified;
-            // TableRelation = "Salesperson/Purchaser";
+
         }
         field(50026; "Warehouse Pick up Person Name"; code[50])
         {
@@ -168,11 +168,11 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
             DataClassification = ToBeClassified;
             TableRelation = "Salesperson/Purchaser";
         }
-        field(50027; "Warehouse Pick up Person Mobile"; text[100])
+        field(50027; "Warehouse Pick up Person Mobile"; code[50])
         {
             Caption = 'Warehouse Pick up Person Mobile';
             DataClassification = ToBeClassified;
-            TableRelation = "Salesperson/Purchaser";
+
         }
         field(50028; "Warehouse Pick up Person KYC Document"; enum SalesHeader_WareHouseKYC)
         {

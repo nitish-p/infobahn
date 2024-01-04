@@ -16,7 +16,7 @@ pageextension 50003 BundleAssemblyPageExt extends "Assembly BOM"
             {
                 ApplicationArea = all;
             }
-            field("Component Type (Component or By Product)"; Rec."Component Type (Component or By Product)")
+            field("Component Type"; Rec."Component Type")
             {
                 ApplicationArea = all;
             }

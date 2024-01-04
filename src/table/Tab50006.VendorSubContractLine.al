@@ -93,7 +93,7 @@ table 50006 "Vendor Sub Contract Line"
         }
         field(15; "Subcontracts ID"; Code[50])
         {
-            Caption = 'Subcontracts ID';
+            Caption = 'Vendor Contract ID';
             DataClassification = ToBeClassified;
 
         }

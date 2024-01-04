@@ -141,7 +141,7 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Hand Delivery Person Mobile field.';
-                    TableRelation = "Salesperson/Purchaser"."Phone No.";
+                    //TableRelation = "Salesperson/Purchaser"."Phone No.";
                 }
                 field("Warehouse Pick up Person Name"; Rec."Warehouse Pick up Person Name")
                 {
@@ -153,7 +153,7 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Warehouse Pick up Person Mobile field.';
-                    TableRelation = "Salesperson/Purchaser"."Phone No.";
+                    //TableRelation = "Salesperson/Purchaser"."Phone No.";
                 }
                 field("Warehouse Pick up Person KYC Document"; Rec."Warehouse Pick up Person KYC Document")
                 {

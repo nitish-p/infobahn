@@ -3,7 +3,7 @@ page 50004 "Main contract card"
     Caption = 'Master Contract';
     PageType = Card;
     SourceTable = "Master contract";
-    ApplicationArea = all;
+    //ApplicationArea = all;
     DelayedInsert = false;
 
 
@@ -314,7 +314,7 @@ page 50004 "Main contract card"
                     begin
                         SalesRecSetup.get();
                         recCustomerSubContractHdr.Init();
-                        recCustomerSubContractHdr."Subcontracts ID" := NoseriesMang.GetNextNo(SalesRecSetup."Customer Subcontract Nos.", Today, true);
+                        recCustomerSubContractHdr."Customer Contracts ID" := NoseriesMang.GetNextNo(SalesRecSetup."Customer Subcontract Nos.", Today, true);
                         recCustomerSubContractHdr."Contract ID" := rec."Contract ID";
                         recCustomerSubContractHdr."Approval Status" := rec."Approval Status";
                         recCustomerSubContractHdr."Billing Date" := rec."Billing Date";

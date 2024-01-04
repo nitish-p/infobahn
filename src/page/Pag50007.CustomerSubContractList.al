@@ -1,7 +1,7 @@
 page 50007 "Customer Sub Contract List"
 {
     ApplicationArea = All;
-    Caption = 'Customer Sub Contract List';
+    Caption = 'Customer Sub Contract';
     PageType = List;
     SourceTable = "Customer Sub Contract Header";
     UsageCategory = Lists;
@@ -13,10 +13,10 @@ page 50007 "Customer Sub Contract List"
         {
             repeater(General)
             {
-                field("Subcontracts ID"; Rec."Subcontracts ID")
+                field("Customer Contracts ID"; Rec."Customer Contracts ID")
                 {
                     ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Subcontracts ID field.';
+                    ToolTip = 'Specifies the value of the Customer Contracts ID field.';
                 }
                 field("Contract ID"; Rec."Contract ID")
                 {
@@ -158,7 +158,7 @@ page 50007 "Customer Sub Contract List"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Service Type field.';
                 }
-                field("Status (Open, In Process, Executed)"; Rec."Status (Open, In Process, Executed)")
+                field("Status"; Rec."Status")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Status (Open, In Process, Executed) field.';

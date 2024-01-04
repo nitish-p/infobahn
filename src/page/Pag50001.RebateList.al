@@ -1,6 +1,6 @@
 page 50001 "Rebate List"
 {
-    Caption = 'Master Rebate List';
+    Caption = 'Rebate Master';
     PageType = List;
     SourceTable = Rebate;
     CardPageId = 50002;

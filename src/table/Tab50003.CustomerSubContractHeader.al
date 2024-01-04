@@ -6,7 +6,7 @@ table 50003 "Customer Sub Contract Header"
 
     fields
     {
-        field(1; "Subcontracts ID"; Code[50])
+        field(1; "Customer Contracts ID"; Code[50])
         {
             Caption = 'Customer Contracts ID';
             DataClassification = ToBeClassified;
@@ -102,7 +102,7 @@ table 50003 "Customer Sub Contract Header"
             Caption = 'Contract Signed';
             DataClassification = ToBeClassified;
         }
-        field(19; "Status (Open, In Process, Executed)"; Option)//enum CustomerSubContract_Status)
+        field(19; "Status"; Option)//enum CustomerSubContract_Status)
         {
             Caption = 'Status';
             DataClassification = ToBeClassified;
@@ -182,7 +182,7 @@ table 50003 "Customer Sub Contract Header"
     }
     keys
     {
-        key(PK; "Subcontracts ID", "Contract ID")
+        key(PK; "Customer Contracts ID", "Contract ID")
         {
             Clustered = true;
         }
@@ -195,9 +195,9 @@ table 50003 "Customer Sub Contract Header"
 
     begin
 
-        if Rec."Subcontracts ID" = '' then begin
+        if Rec."Customer Contracts ID" = '' then begin
             SalesRecSetup.Get();
-            "Subcontracts ID" := NoseriesManagment.GetNextNo(SalesRecSetup."Customer Subcontract Nos.", WorkDate, true);
+            "Customer Contracts ID" := NoseriesManagment.GetNextNo(SalesRecSetup."Customer Subcontract Nos.", WorkDate, true);
         end;
 
     end;
