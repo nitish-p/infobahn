@@ -8,10 +8,10 @@ enum 50013 "BOM_ComponentType"
     }
     value(1; "Component")
     {
-        Caption = ' ';
+        Caption = 'Component';
     }
     value(2; "By Product")
     {
-        Caption = ' ';
+        Caption = 'By Product';
     }
 }

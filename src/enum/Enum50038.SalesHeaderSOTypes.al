@@ -14,14 +14,11 @@ enum 50038 "SalesHeader_SOTypes"
     {
         Caption = 'Back to Back';
     }
-    value(3; Subscription)
+    value(3; "MOQ")
     {
-        Caption = 'Subscription';
+        Caption = 'MOQ';
     }
-    value(4; Rental)
-    {
-        Caption = 'Rental';
-    }
+
     // value(5; DSG)
     // {
     //     Caption = 'DSG';

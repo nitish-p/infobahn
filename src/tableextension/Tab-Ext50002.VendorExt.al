@@ -9,7 +9,7 @@ tableextension 50002 "Vendor Ext" extends Vendor
         }
         field(50001; "MSME Status (Micro, Medium, etc.)"; enum Vendor_MSMEStatus)
         {
-            Caption = 'MSME Status (Micro, Medium, etc.)';
+            Caption = 'MSME Status';
             DataClassification = ToBeClassified;
         }
         field(50002; "CIN No."; Code[20])

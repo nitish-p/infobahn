@@ -75,6 +75,11 @@ pageextension 50032 SalesInvoiceListExt extends "Sales Invoice List"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Pending for Payment field.';
             }
+            field("By Pass Credit Limit"; Rec."By Pass Credit Limit")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the By Pass Credit Limit field.';
+            }
             field("Pending for POD"; Rec."Pending for POD")
             {
                 ApplicationArea = All;
@@ -85,7 +90,7 @@ pageextension 50032 SalesInvoiceListExt extends "Sales Invoice List"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Pending for Submission field.';
             }
-            field("Pending for Delivery (In-Transit)"; Rec."Pending for Delivery (In-Transit)")
+            field("Pending for Delivery"; Rec."Pending for Delivery (In-Transit)")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Pending for Delivery (In-Transit) field.';
@@ -135,10 +140,30 @@ pageextension 50032 SalesInvoiceListExt extends "Sales Invoice List"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Warehouse Pick up Person KYC Document field.';
             }
-            field("Customer Ref. No. (PR NO)"; Rec."Customer Ref. No. (PR NO)")
+            field("Customer Ref. No."; Rec."Customer Ref. No. (PR NO)")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Customer Ref. No. (PR NO) field.';
+            }
+            field("Expected Cash Flow Date"; Rec."Expected Cash Flow Date")
+            {
+                ApplicationArea = All;
+            }
+            field("Delivery Date"; Rec."Delivery Date")
+            {
+                ApplicationArea = all;
+            }
+            field("Dispatch Date"; Rec."Dispatch Date")
+            {
+                ApplicationArea = All;
+            }
+            field("PO Date"; Rec."PO Date")
+            {
+                ApplicationArea = all;
+            }
+            field("Submission Date"; Rec."Submission Date")
+            {
+                ApplicationArea = all;
             }
 
         }

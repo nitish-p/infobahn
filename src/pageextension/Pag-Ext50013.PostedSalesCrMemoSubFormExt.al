@@ -88,6 +88,16 @@ pageextension 50013 PostedSalesCrMemoSubFormExt extends "Posted Sales Cr. Memo S
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Serial no field.';
             }
+            field(Bid; Rec.Bid)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Bid No. field.';
+            }
+            field("Bid No."; Rec."Bid No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Bid No. field.';
+            }
 
         }
     }

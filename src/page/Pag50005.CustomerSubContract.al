@@ -1,9 +1,9 @@
 page 50005 "Customer Sub Contract"
 {
     Caption = 'Customer Sub Contract';
-    PageType = Card;
+    PageType = Document;
     SourceTable = "Customer Sub Contract Header";
-    UsageCategory = Administration;
+    //UsageCategory = Administration;
     ApplicationArea = all;
     Editable = true;
     DelayedInsert = false;

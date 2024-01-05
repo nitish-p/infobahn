@@ -41,7 +41,7 @@ page 50027 "Purchase Indent Subform"
                 {
                     ToolTip = 'Specifies the value of the  Expected Delivery Date (ADD) field.';
                     ApplicationArea = all;
-                    Caption = 'Expected Delivery Date (EDD)';
+
                 }
                 field("Customer Delivery Date (CDD)"; Rec."Customer Delivery Date (CDD)")
                 {

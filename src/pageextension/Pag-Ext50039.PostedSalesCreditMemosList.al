@@ -76,6 +76,11 @@ pageextension 50039 PostedSalesCreditMemosList extends "Posted Sales Credit Memo
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Pending for Payment field.';
             }
+            field("By Pass Credit Limit"; Rec."By Pass Credit Limit")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the By Pass Credit Limit field.';
+            }
             field("Pending for POD"; Rec."Pending for POD")
             {
                 ApplicationArea = All;
@@ -140,6 +145,26 @@ pageextension 50039 PostedSalesCreditMemosList extends "Posted Sales Credit Memo
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Customer Ref. No. (PR NO) field.';
+            }
+            field("Expected Cash Flow Date"; Rec."Expected Cash Flow Date")
+            {
+                ApplicationArea = All;
+            }
+            field("Delivery Date"; Rec."Delivery Date")
+            {
+                ApplicationArea = all;
+            }
+            field("Dispatch Date"; Rec."Dispatch Date")
+            {
+                ApplicationArea = All;
+            }
+            field("PO Date"; Rec."PO Date")
+            {
+                ApplicationArea = all;
+            }
+            field("Submission Date"; Rec."Submission Date")
+            {
+                ApplicationArea = all;
             }
             //}
         }

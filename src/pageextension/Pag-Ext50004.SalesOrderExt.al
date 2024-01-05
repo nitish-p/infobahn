@@ -13,6 +13,11 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                     ApplicationArea = all;
                     TableRelation = "Purchase Header"."No.";
                 }
+                field("PO Date"; Rec."PO Date")
+                {
+                    ApplicationArea = all;
+                }
+
                 field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;
@@ -79,6 +84,10 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Actual Date of Cash Flow field.';
                 }
+                field("Expected Cash Flow Date"; Rec."Expected Cash Flow Date")
+                {
+                    ApplicationArea = All;
+                }
                 field("Each Stage Movement Date"; Rec."Each Stage Movement Date")
                 {
                     ApplicationArea = All;
@@ -94,6 +103,11 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pending for Payment field.';
                 }
+                field("By Pass Credit Limit"; Rec."By Pass Credit Limit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the By Pass Credit Limit field.';
+                }
                 field("Pending for POD"; Rec."Pending for POD")
                 {
                     ApplicationArea = All;
@@ -104,7 +118,7 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pending for Submission field.';
                 }
-                field("Pending for Delivery (In-Transit)"; Rec."Pending for Delivery (In-Transit)")
+                field("Pending for Delivery"; Rec."Pending for Delivery (In-Transit)")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pending for Delivery (In-Transit) field.';
@@ -161,11 +175,26 @@ pageextension 50004 SalesOrderExt extends "Sales Order"
                     ToolTip = 'Specifies the value of the Warehouse Pick up Person KYC Document field.';
                     TableRelation = "Salesperson/Purchaser".Code;
                 }
-                field("Customer Ref. No. (PR NO)"; Rec."Customer Ref. No. (PR NO)")
+                field("Customer Ref. No."; Rec."Customer Ref. No. (PR NO)")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Customer Ref. No. (PR NO) field.';
                 }
+
+                field("Delivery Date"; Rec."Delivery Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("Dispatch Date"; Rec."Dispatch Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Submission Date"; Rec."Submission Date")
+                {
+                    ApplicationArea = all;
+                }
+
+
 
             }
         }

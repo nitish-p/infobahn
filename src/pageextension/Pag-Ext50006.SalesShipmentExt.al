@@ -10,6 +10,10 @@ pageextension 50006 SalesShipmentExt extends "Posted Sales Shipment"
                 {
                     ApplicationArea = all;
                 }
+                field("PO Date"; Rec."PO Date")
+                {
+                    ApplicationArea = all;
+                }
                 field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;
@@ -61,6 +65,10 @@ pageextension 50006 SalesShipmentExt extends "Posted Sales Shipment"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Actual Date of Cash Flow field.';
                 }
+                field("Expected Cash Flow Date"; Rec."Expected Cash Flow Date")
+                {
+                    ApplicationArea = All;
+                }
                 field("Each Stage Movement Date"; Rec."Each Stage Movement Date")
                 {
                     ApplicationArea = All;
@@ -75,6 +83,11 @@ pageextension 50006 SalesShipmentExt extends "Posted Sales Shipment"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pending for Payment field.';
+                }
+                field("By Pass Credit Limit"; Rec."By Pass Credit Limit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the By Pass Credit Limit field.';
                 }
                 field("Pending for POD"; Rec."Pending for POD")
                 {
@@ -141,6 +154,21 @@ pageextension 50006 SalesShipmentExt extends "Posted Sales Shipment"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Customer Ref. No. (PR NO) field.';
                 }
+
+                field("Delivery Date"; Rec."Delivery Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("Dispatch Date"; Rec."Dispatch Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Submission Date"; Rec."Submission Date")
+                {
+                    ApplicationArea = all;
+                }
+
+
 
             }
         }

@@ -27,9 +27,9 @@ tableextension 50003 ItemTabExt extends Item
             Caption = 'AMC Period To';
             DataClassification = ToBeClassified;
         }
-        field(50005; "MSP (Minimum Selling Price)"; Decimal)
+        field(50005; "Minimum Selling Price"; Decimal)
         {
-            Caption = 'MSP (Minimum Selling Price)';
+            Caption = 'Minimum Selling Price';
             DataClassification = ToBeClassified;
         }
         field(50006; "Master Warehouse"; code[50])
@@ -40,7 +40,7 @@ tableextension 50003 ItemTabExt extends Item
         }
         field(50007; NOMENCLATURE; Text[100])
         {
-            Caption = 'NOMENCLATURE';
+            Caption = 'Nomenclature';
             DataClassification = ToBeClassified;
         }
         field(50008; "Categories 1"; Text[100])

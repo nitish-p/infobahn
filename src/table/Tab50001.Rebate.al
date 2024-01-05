@@ -17,13 +17,20 @@ table 50001 Rebate
         {
             Caption = 'Program Name';
         }
+        field(4; "Start Date"; Date)
+        {
+            Caption = 'Start Date';
+        }
+        field(5; "End Date"; Date)
+        {
+            Caption = 'End Date';
+        }
     }
     keys
     {
-        key(PK; "Types of Rebate")
+        key(PK; "Program ID")
         {
             Clustered = true;
         }
-        key(PK2; "Program ID") { }
     }
 }

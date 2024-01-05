@@ -88,6 +88,16 @@ pageextension 50015 SalesOrderArchiveSubformExt extends "Sales Order Archive Sub
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Serial no field.';
             }
+            field(Bid; Rec.Bid)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Bid No. field.';
+            }
+            field("Bid No."; Rec."Bid No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Bid No. field.';
+            }
 
         }
     }

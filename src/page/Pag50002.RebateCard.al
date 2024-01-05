@@ -27,6 +27,16 @@ page 50002 "Rebate Card"
                 {
                     ApplicationArea = all;
                 }
+                field("Start Date"; Rec."Start Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Start Date field.';
+                }
+                field("End Date"; Rec."End Date")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the End Date field.';
+                }
             }
         }
     }

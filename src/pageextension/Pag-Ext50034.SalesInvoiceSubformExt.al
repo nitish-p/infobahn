@@ -89,6 +89,17 @@ pageextension 50034 SalesInvoiceSubformExt extends "Sales Invoice Subform"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Serial no field.';
             }
+            field(Bid; Rec.Bid)
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Bid No. field.';
+            }
+            field("Bid No."; Rec."Bid No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Bid No. field.';
+            }
+
 
         }
     }

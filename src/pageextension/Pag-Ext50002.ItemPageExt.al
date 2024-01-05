@@ -30,7 +30,7 @@ pageextension 50002 ItemPageExt extends "Item Card"
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("MSP (Minimum Selling Price)"; Rec."MSP (Minimum Selling Price)")
+                field("Minimum Selling Price"; Rec."Minimum Selling Price")
                 {
                     ApplicationArea = All;
                 }

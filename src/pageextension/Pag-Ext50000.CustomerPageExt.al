@@ -7,6 +7,16 @@ pageextension 50000 CustomerPageExt extends "Customer Card"
         {
             group(Attributes)
             {
+                field("Credit Insurance"; Rec."Credit Insurance")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Credit Insurance field.';
+                }
+                field("Credit Insurance Value"; Rec."Credit Insurance Value")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Credit Insurance Value field.';
+                }
                 field(MSME; Rec.MSME)
                 {
                     ApplicationArea = all;
@@ -122,6 +132,7 @@ pageextension 50000 CustomerPageExt extends "Customer Card"
                 {
                     ApplicationArea = all;
                 }
+
             }
         }
 

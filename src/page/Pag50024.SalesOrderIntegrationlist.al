@@ -3,7 +3,7 @@
 page 50024 "Sales Order Integration list"
 {
     ApplicationArea = all;
-    Caption = 'Sales Order Integration List';
+    Caption = 'Sales Order Integration';
     CardPageID = 50023;
     DataCaptionFields = "Sell-to Customer No.";
     Editable = true;
@@ -11,7 +11,7 @@ page 50024 "Sales Order Integration list"
     QueryCategory = 'Sales Order List';
     RefreshOnActivate = true;
     SourceTable = "Sales Header";
-    SourceTableView = where("Document Type" = const(Order));
+    SourceTableView = where("SO Stage" = const(Integration));
     UsageCategory = Lists;
     AdditionalSearchTerms = 'Sales Commitments, Sales Order Overview, Sale Orders, Order Log, Sale List, Client Orders';
 
@@ -170,6 +170,31 @@ page 50024 "Sales Order Integration list"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the SO Stage field.';
                 }
+                field("Expected Cash Flow Date"; Rec."Expected Cash Flow Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("Delivery Date"; Rec."Delivery Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("Dispatch Date"; Rec."Dispatch Date")
+                {
+                    ApplicationArea = All;
+                }
+                field("PO Date"; Rec."PO Date")
+                {
+                    ApplicationArea = all;
+                }
+                field("By Pass Credit Limit"; Rec."By Pass Credit Limit")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the By Pass Credit Limit field.';
+                }
+                field("Submission Date"; Rec."Submission Date")
+                {
+                    ApplicationArea = all;
+                }
                 field("Customer Contract ID"; Rec."Customer Contract ID")
                 {
                     ApplicationArea = All;
@@ -226,8 +251,9 @@ page 50024 "Sales Order Integration list"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pending for Submission field.';
                 }
-                field("Pending for Delivery (In-Transit)"; Rec."Pending for Delivery (In-Transit)")
+                field("Pending for Delivery"; Rec."Pending for Delivery (In-Transit)")
                 {
+
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Pending for Delivery (In-Transit) field.';
                 }
@@ -276,7 +302,7 @@ page 50024 "Sales Order Integration list"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Warehouse Pick up Person KYC Document field.';
                 }
-                field("Customer Ref. No. (PR NO)"; Rec."Customer Ref. No. (PR NO)")
+                field("Customer Ref. No."; Rec."Customer Ref. No. (PR NO)")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Customer Ref. No. (PR NO) field.';

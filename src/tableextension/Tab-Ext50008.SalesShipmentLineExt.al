@@ -87,5 +87,15 @@ tableextension 50008 SalesShipmentLineExt extends "Sales Shipment Line"
             Caption = 'Serial no';
             DataClassification = ToBeClassified;
         }
+        field(50017; "Bid No."; Code[30])
+        {
+            Caption = 'Bid No.';
+            DataClassification = ToBeClassified;
+        }
+        field(50018; "Bid"; Boolean)
+        {
+            Caption = 'Bid No.';
+            DataClassification = ToBeClassified;
+        }
     }
 }

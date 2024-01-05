@@ -110,7 +110,7 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         }
         field(50016; "Pending for Delivery (In-Transit)"; Boolean)
         {
-            Caption = 'Pending for Delivery (In-Transit)';
+            Caption = 'Pending for Delivery';
             DataClassification = ToBeClassified;
         }
         field(50017; "Pending for POD"; Boolean)
@@ -181,7 +181,17 @@ tableextension 50005 "Sales Header Ext" extends "Sales Header"
         }
         field(50029; "Customer Ref. No. (PR NO)"; Text[100])
         {
-            Caption = 'Customer Ref. No. (PR NO)';
+            Caption = 'Customer Ref. No.';
+            DataClassification = ToBeClassified;
+        }
+        field(50031; "By Pass Credit Limit"; Boolean)
+        {
+            Caption = 'By Pass Credit Limit';
+            DataClassification = ToBeClassified;
+        }
+        field(50032; "PO Date"; Date)
+        {
+            Caption = 'PO Date';
             DataClassification = ToBeClassified;
         }
 

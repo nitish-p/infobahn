@@ -2,10 +2,11 @@ page 50007 "Customer Sub Contract List"
 {
     ApplicationArea = All;
     Caption = 'Customer Sub Contract';
+    CardPageID = "Customer Sub Contract";
     PageType = List;
     SourceTable = "Customer Sub Contract Header";
     UsageCategory = Lists;
-    CardPageId = 50005;
+    //CardPageId = 50005;
 
     layout
     {

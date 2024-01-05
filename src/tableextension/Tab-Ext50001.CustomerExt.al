@@ -14,7 +14,7 @@ tableextension 50001 "Customer Ext" extends Customer
         }
         field(50002; "Type of Customer (Pvt. Ltd, Public Ltd, Etc)"; enum Customer_TypesofCustomer)
         {
-            Caption = 'Type of Customer (Pvt. Ltd, Public Ltd, Etc)';
+            Caption = 'Type of Customer';
             DataClassification = ToBeClassified;
         }
         field(50003; "Owner/Director KYC"; enum "Customer_Owner/DirectorKYC")
@@ -24,7 +24,7 @@ tableextension 50001 "Customer Ext" extends Customer
         }
         field(50004; "MSME Status (Micro, Medium, etc.)"; enum Customer_MSMEStatus)
         {
-            Caption = 'MSME Status (Micro, Medium, etc.)';
+            Caption = 'MSME Status';
             DataClassification = ToBeClassified;
         }
         field(50005; "Parent Child Relation"; Code[50])
@@ -34,7 +34,7 @@ tableextension 50001 "Customer Ext" extends Customer
         }
         field(50006; "ROG Concept (Red, Orange, Green)"; enum Customer_ROGConcept)
         {
-            Caption = 'ROG Concept (Red, Orange, Green)';
+            Caption = 'ROG Concep';
             DataClassification = ToBeClassified;
         }
         field(50007; "Third Party Evaluation"; Boolean)
@@ -158,6 +158,16 @@ tableextension 50001 "Customer Ext" extends Customer
             begin
                 // CalcFields(District)
             end;
+        }
+        field(50029; "Credit Insurance"; Boolean)
+        {
+            Caption = 'Credit Insurance';
+            DataClassification = ToBeClassified;
+        }
+        field(50030; "Credit Insurance Value"; Decimal)
+        {
+            Caption = 'Credit Insurance Value';
+            DataClassification = ToBeClassified;
         }
         // modify("State Code")
         // field(50029; "Types of Customer"; enum Customer_TypesOfCustomer)

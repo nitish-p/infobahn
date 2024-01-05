@@ -1,14 +1,14 @@
 enum 50039 "SalesHeader_SoStage"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = ' ';
     }
-    value(1; Authorization)
+    value(1; "Credit Authorization")
     {
-        Caption = 'Authorization';
+        Caption = 'Credit Authorization';
     }
     value(2; Verification)
     {
@@ -30,13 +30,9 @@ enum 50039 "SalesHeader_SoStage"
     {
         Caption = 'Integration';
     }
-    value(7; Dispatch)
+    value(7; "Delivery Challan")
     {
-        Caption = 'Dispatch';
-    }
-    value(8; Consumption)
-    {
-        Caption = 'Consumption';
+        Caption = 'Delivery Challan';
     }
     value(9; Invoice)
     {

@@ -1,7 +1,7 @@
 page 50028 "Purchase Intends"
 {
     ApplicationArea = All;
-    Caption = 'Purchase Indents';
+    Caption = 'Purchase Indent';
     PageType = List;
     SourceTable = "Purchase Indent Header";
     UsageCategory = Lists;

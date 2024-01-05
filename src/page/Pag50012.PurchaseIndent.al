@@ -4,7 +4,7 @@ page 50012 "Purchase Indent"
     Caption = 'Purchase Indent';
     PageType = Document;
     SourceTable = "Purchase Indent Header";
-    UsageCategory = Administration;
+    // UsageCategory = Administration;
 
     layout
     {

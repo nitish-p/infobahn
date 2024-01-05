@@ -159,6 +159,16 @@ tableextension 50015 "SalesArchiveHeaderExt" extends "Sales Header Archive"
             Caption = 'Customer Ref. No. (PR NO)';
             DataClassification = ToBeClassified;
         }
+        field(50031; "By Pass Credit Limit"; Boolean)
+        {
+            Caption = 'By Pass Credit Limit';
+            DataClassification = ToBeClassified;
+        }
+        field(50032; "PO Date"; Date)
+        {
+            Caption = 'PO Date';
+            DataClassification = ToBeClassified;
+        }
 
     }
 }

@@ -88,5 +88,25 @@ tableextension 50006 SalesLineExt extends "Sales Line"
             Caption = 'Serial no';
             DataClassification = ToBeClassified;
         }
+        field(50017; "Bid No."; Code[30])
+        {
+            Caption = 'Bid No.';
+            DataClassification = ToBeClassified;
+        }
+        field(50018; "Bid"; Boolean)
+        {
+            Caption = 'Bid No.';
+            DataClassification = ToBeClassified;
+        }
     }
+    // trigger OnInsert()
+    // var
+    //     myInt: Integer;
+    // begin
+    //     if rec.Bid = true then begin
+    //         if rec."Bid No." = ' ' then begin
+    //             Error('Please Add Bid No.');
+    //         end
+    //     end;
+    // end;
 }
