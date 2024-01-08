@@ -5,6 +5,7 @@ page 50029 "NLC Ledger List"
     PageType = List;
     SourceTable = "NLC Ledger";
     UsageCategory = Lists;
+    AutoSplitKey = true;
 
     layout
     {

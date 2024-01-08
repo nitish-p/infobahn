@@ -13,16 +13,17 @@ page 50002 "Rebate Card"
             group(General)
             {
                 Caption = 'General';
+                field("Program ID"; Rec."Program ID")
+                {
+                    ApplicationArea = all;
+                }
 
                 field("Types of Rebate"; Rec."Types of Rebate")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Types of Rebate field.';
                 }
-                field("Program ID"; Rec."Program ID")
-                {
-                    ApplicationArea = all;
-                }
+
                 field("Prgram Name"; Rec."Prgram Name")
                 {
                     ApplicationArea = all;

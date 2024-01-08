@@ -20,5 +20,11 @@ tableextension 50031 "Sales&ReceivableSetup" extends "Sales & Receivables Setup"
             DataClassification = ToBeClassified;
             TableRelation = "No. Series";
         }
+        field(50004; "Rebate Nos."; code[20])
+        {
+            Caption = 'Rebate Nos.';
+            DataClassification = ToBeClassified;
+            TableRelation = "No. Series";
+        }
     }
 }

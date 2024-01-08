@@ -4,7 +4,7 @@ enum 50014 "Rebate_Types"
 
     value(0; " ")
     {
-        Caption = 'Sell In Rebate';
+
     }
     value(1; Adjustments)
     {
@@ -14,12 +14,12 @@ enum 50014 "Rebate_Types"
     {
         Caption = 'Stock Protection Rebate';
     }
-    value(3; "Sell Out Rebat")
+    value(3; "Sell Out Rebate")
     {
-        Caption = 'Sell Out Rebat';
+        Caption = 'Sell Out Rebate';
     }
     value(4; "Sell In Rebate")
     {
-        Caption = 'Sell Out Rebat';
+        Caption = 'Sell In Rebate';
     }
 }

@@ -33,4 +33,16 @@ table 50001 Rebate
             Clustered = true;
         }
     }
+    trigger OnInsert()
+    var
+        noseriesmang: codeunit NoSeriesManagement;
+        SalesAndRecSetup: Record "Sales & Receivables Setup";
+    begin
+        if rec."Program ID" = '' then begin
+            SalesAndRecSetup.get();
+            "Program ID" := noseriesmang.GetNextNo(SalesAndRecSetup."Rebate Nos.", Today, true);
+
+        end;
+
+    end;
 }

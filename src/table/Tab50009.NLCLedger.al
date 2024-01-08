@@ -66,10 +66,16 @@ table 50009 "NLC Ledger"
             Caption = 'Remaining Rebate';
             DataClassification = ToBeClassified;
         }
+        field(13; "Line No."; Code[20])
+        {
+            DataClassification = ToBeClassified;
+
+        }
+
     }
     keys
     {
-        key(PK; "Program ID")
+        key(PK; "Document No.", "Line No.")
         {
             Clustered = true;
         }

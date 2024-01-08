@@ -18,6 +18,11 @@ pageextension 50063 "Sales&ReceivableSetup" extends "Sales & Receivables Setup"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Vendor Subcontract Nos. field.';
             }
+            field("Rebate Nos."; Rec."Rebate Nos.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies the value of the Rebate Nos. field.';
+            }
         }
     }
 }
