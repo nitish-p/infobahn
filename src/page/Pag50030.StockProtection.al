@@ -160,8 +160,7 @@ page 50030 "Stock Protection "
                         NLCLedger: record "NLC Ledger";
                         LineNo: Integer;
                     begin
-                        NLCLedger.Reset();
-                        NLCLedger.SetRange();
+
                         // rec.Reset();
                         // rec.SetRange("Document No.", rec."Document No.");
                         // if rec.FindFirst() then
@@ -192,17 +191,41 @@ page 50030 "Stock Protection "
                         //         NLCLedger.Quantity := rec.Quantity;
                         //     until NLCLedger.Next() = 0;
                         // end;
-                        // NLCLedger.Init();
-                        // repeat
-                        //     NLCLedger."Document No." := rec."Document No.";
-                        //     NLCLedger."Program ID" := rec."Program ID";
-                        //     NLCLedger."Item Code" := rec."Item Code";
-                        //     NLCLedger."Item Name" := rec."Item Name";
-                        //     NLCLedger.Quantity := rec.Quantity;
-                        // until NLCLedger.Next() = 0;
-                        // NLCLedger.Insert();
-                    end;
+                        //     rec.Reset();
+                        //     rec.SetRange("Document No.", Rec."Document No.");
+                        //     if rec.FindFirst() then
+                        //         repeat
+                        //             NLCLedger.Init();
+                        //             NLCLedger."Document No." := rec."Document No.";
+                        //             NLCLedger."Program ID" := rec."Program ID";
+                        //             NLCLedger."Item Code" := rec."Item Code";
+                        //             NLCLedger."Item Name" := rec."Item Name";
+                        //             NLCLedger.Quantity := rec.Quantity;
+                        //             NLCLedger.Insert();
+                        //         until rec.Next() = 0;
+                        //     page.Run(Page::"NLC Ledger List", NLCLedger);
 
+                        // end;
+                        if rec.FindFirst() then
+                            repeat
+                                NLCLedger.Init();
+                                NLCLedger."Document No." := rec."Document No.";
+                                NLCLedger."Program ID" := rec."Program ID";
+                                NLCLedger."Item Code" := rec."Item Code";
+                                NLCLedger."Item Name" := rec."Item Name";
+                                NLCLedger.Quantity := rec.Quantity;
+                                NLCLedger."Average NLC" := rec."Average NLC";
+                                NLCLedger.Insert(true);
+                            until rec.Next() = 0;
+
+                        page.Run(Page::"NLC Ledger List", NLCLedger);
+                        NLCLedger.Reset();
+                        NLCLedger.SetRange("Document No.", rec."Document No.");
+                        if NLCLedger.FindFirst() then begin
+
+                        end;
+                        rec.DeleteAll();
+                    end;
                 }
             }
         }

@@ -121,7 +121,7 @@ table 50010 "Stock Protection"
     }
     keys
     {
-        key(PK; "Program ID", "Document No.", "Line No.")
+        key(PK; "Rebate Type", "Document No.", "Line No.")
         {
             Clustered = true;
         }
