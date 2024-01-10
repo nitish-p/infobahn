@@ -168,6 +168,21 @@ tableextension 50009 "SalesInvHeaderExt" extends "Sales Invoice Header"
             Caption = 'PO Date';
             DataClassification = ToBeClassified;
         }
+        field(50033; "Contract ID"; code[20])
+        {
+            Caption = 'Contract ID';
+            DataClassification = ToBeClassified;
+        }
+        field(50034; "Customer PO No."; code[20])
+        {
+            Caption = 'Customer PO No.';
+            DataClassification = ToBeClassified;
+        }
+        field(50035; "Service Type"; Enum VendorSubCon_ServiceType)
+        {
+            Caption = 'Service Type';
+            DataClassification = ToBeClassified;
+        }
 
     }
 }

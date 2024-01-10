@@ -1,6 +1,6 @@
 page 50005 "Customer Sub Contract"
 {
-    Caption = 'Customer Sub Contract';
+    Caption = 'Customer Contract';
     PageType = Document;
     SourceTable = "Customer Sub Contract Header";
     //UsageCategory = Administration;
@@ -69,10 +69,26 @@ page 50005 "Customer Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Branch Code field.';
                 }
+                field(Customer; Rec.Customer)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Customer field.';
+                    // trigger OnValidate()
+                    // begin
+                    //     if recCustomer.get(rec.Customer) then begin
+                    //         CustomerName := recCustomer.Name;
+                    //     end;
+                    // end;
+                }
                 field("Child Customer"; Rec."Child Customer")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Child Customer field.';
+                }
+                field("Customer PO No."; Rec."Customer PO No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Customer PO No. field.';
                 }
                 field("Commitment Period End Date"; Rec."Commitment Period End Date")
                 {
@@ -99,16 +115,7 @@ page 50005 "Customer Sub Contract"
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Creation Date time field.';
                 }
-                field(Customer; Rec.Customer)
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Customer field.';
-                }
-                field("Customer PO No."; Rec."Customer PO No.")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Customer PO No. field.';
-                }
+
                 field("Exit Clause Date"; Rec."Exit Clause Date")
                 {
                     ApplicationArea = All;
@@ -187,6 +194,7 @@ page 50005 "Customer Sub Contract"
             }
         }
     }
+
     actions
     {
         area(Processing)
@@ -215,11 +223,11 @@ page 50005 "Customer Sub Contract"
                 var
                     myInt: Integer;
                 begin
-                    Message('Amendverson working');
+                    Message(' ');
                 end;
 
             }
-            action("Approval Status2")
+            action("Approval  Status")
             {
                 ApplicationArea = all;
                 Image = Approval;
@@ -229,7 +237,7 @@ page 50005 "Customer Sub Contract"
                 var
                     myInt: Integer;
                 begin
-                    Message('approval status working');
+                    Message('Approval Status Sent');
                 end;
 
             }
@@ -243,7 +251,7 @@ page 50005 "Customer Sub Contract"
                 var
                     myInt: Integer;
                 begin
-                    Message('copy subcontract working');
+                    Message('Copy Contract');
                 end;
 
             }
@@ -278,7 +286,9 @@ page 50005 "Customer Sub Contract"
                         RecVendorSubContrcatLine: Record "Vendor Sub Contract Line";
                         LineNo: Integer;
 
+
                     begin
+
                         SalesRecSetup.get();
                         recVendorSubContractHdr.Init();
                         recVendorSubContractHdr."Subcontracts ID" := NoseriesMang.GetNextNo(SalesRecSetup."Vendor Subcontract Nos.", Today, true);
@@ -359,9 +369,109 @@ page 50005 "Customer Sub Contract"
                     end;
                 }
             }
+            action("Create Sales Order")
+            {
+                ApplicationArea = All;
+                Image = CreateDocument;
+                trigger OnAction()
+                var
+                    myInt: Integer;
+                    recSalesHdr: Record "Sales Header";
+                    NoseriesMang: Codeunit NoSeriesManagement;
+                    recContract: Record "Master contract";
+                    SalesRecSetup: Record "Sales & Receivables Setup";
+                    recCustomerSubContractLine: Record "Customer Sub Contract Line";
+                    RecSalesine: Record "Sales Line";
+                    LineNo: Integer;
+                    Name: Code[100];
+                    recCustomer1: Record Customer;
+
+                begin
+                    recCustomer1.Reset();
+                    recCustomer1.SetRange(recCustomer1."No.", rec.Customer);
+                    if recCustomer1.FindFirst() then begin
+                        Name := recCustomer1.Name;
+                    end;
+                    SalesRecSetup.get();
+                    recSalesHdr.Init();
+                    recSalesHdr."Document Type" := recSalesHdr."Document Type"::Order;
+                    recSalesHdr."No." := NoseriesMang.GetNextNo(SalesRecSetup."Order Nos.", Today, true);
+                    recSalesHdr."Sell-to Customer Name" := Name;
+                    recSalesHdr."Bill-to Customer No." := rec.Customer;
+                    recSalesHdr.Insert(true);
+                    recSalesHdr."Sell-to Customer No." := rec.Customer;
+                    recSalesHdr."Customer Contract ID" := rec."Customer Contracts ID";
+                    //recSalesHdr.Insert(true);
+
+                    // recSalesHdr.Customer := rec."Customer";
+                    // recSalesHdr."Customer PO No." := rec."Customer PO No.";
+                    recSalesHdr."Contract ID" := rec."Contract ID";
+                    recSalesHdr."Customer PO No." := rec."Customer PO No.";
+
+                    recSalesHdr."Customer PO No." := rec."Customer PO No.";
+                    recSalesHdr."Service Type" := rec."Service Type";
+                    //recSalesHdr."Service Type" := rec."Service Type";
+                    recSalesHdr."SO Stage" := rec."SO Stage";
+
+                    IF recSalesHdr.MODIFY(TRUE) THEN BEGIN
+                        LineNo := 10000;
+                        recCustomerSubContractLine.RESET();
+                        recCustomerSubContractLine.SETRANGE(recCustomerSubContractLine."Customer Contract ID", rec."Customer Contracts ID");
+                        IF recCustomerSubContractLine.FINDSET THEN
+                            REPEAT
+
+                                RecSalesine.INIT;
+                                RecSalesine."Document Type" := RecSalesine."Document Type"::Order;
+                                RecSalesine."Document No." := recSalesHdr."No.";
+                                //RecSalesine."Subcontracts ID" := recSalesHdr."Subcontracts ID";
+                                if recCustomerSubContractLine."Type " = recCustomerSubContractLine."Type "::Item then
+                                    RecSalesine.Type := RecSalesine.Type::Item
+                                else
+                                    if recCustomerSubContractLine."Type " = recCustomerSubContractLine."Type "::FA then
+                                        RecSalesine.Type := RecSalesine.Type::"Fixed Asset"
+                                    else
+                                        if recCustomerSubContractLine."Type " = recCustomerSubContractLine."Type "::GL then
+                                            RecSalesine.Type := RecSalesine.Type::"G/L Account"
+                                        else
+                                            if recCustomerSubContractLine."Type " = recCustomerSubContractLine."Type "::Charges then
+                                                RecSalesine.Type := RecSalesine.Type::"Charge (Item)"
+                                            else
+                                                if recCustomerSubContractLine."Type " = recCustomerSubContractLine."Type "::Resources then
+                                                    RecSalesine.Type := RecSalesine.Type::Resource;
+
+
+                                RecSalesine."Line No." := LineNo;
+                                //Message('Inserting Line No: ', RecSalesine."Line No.");
+                                RecSalesine.VALIDATE(RecSalesine."No.", recCustomerSubContractLine."No.");
+                                RecSalesine.VALIDATE(RecSalesine.Quantity, recCustomerSubContractLine.Quantity);
+                                RecSalesine.VALIDATE(RecSalesine."Customer Contract", recCustomerSubContractLine."Customer Contract ID");
+
+                                RecSalesine.VALIDATE(RecSalesine."Location Code", recCustomerSubContractLine.Location);
+                                RecSalesine.VALIDATE(RecSalesine.Mrgin, recCustomerSubContractLine.Margin);
+                                //RecSalesine.VALIDATE(RecSalesine.NLC, recCustomerSubContractLine.NLC);
+
+                                //RecSalesine.VALIDATE(RecSalesine.Rebate, recCustomerSubContractLine.Rebate);
 
 
 
+                                RecSalesine.Insert(True);
+                                LineNo += 10000;
+
+                            UNTIL recCustomerSubContractLine.NEXT = 0;
+                    end;
+
+                    Page.Run(Page::"Sales Order", recSalesHdr);
+                end;
+            }
         }
+
+
+
+
     }
+    var
+        CustomerName: Code[100];
+        recCustomer: Record Customer;
+
 }
+

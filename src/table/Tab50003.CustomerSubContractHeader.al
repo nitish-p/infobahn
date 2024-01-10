@@ -57,7 +57,7 @@ table 50003 "Customer Sub Contract Header"
         {
             Caption = 'Billing frequency';
             DataClassification = ToBeClassified;
-            OptionMembers = " ",Anualy,monthly,quarterly,"Half Yearly";
+            OptionMembers = " ",Annualy,Monthly,Quarterly,"Half Yearly";
         }
         field(11; "Billing Date"; Date)
         {
@@ -68,13 +68,13 @@ table 50003 "Customer Sub Contract Header"
         {
             Caption = 'Customer';
             DataClassification = ToBeClassified;
-            TableRelation = Customer.Name;
+            TableRelation = Customer;
         }
         field(13; "Child Customer"; Code[50])
         {
             Caption = 'Child Customer';
             DataClassification = ToBeClassified;
-            TableRelation = Customer.Name;
+            TableRelation = Customer;
         }
         field(14; Location; Code[50])
         {
@@ -170,11 +170,11 @@ table 50003 "Customer Sub Contract Header"
 
             DataClassification = ToBeClassified;
         }
-        field(32; "SO Stage"; Code[50])
+        field(32; "SO Stage"; enum SalesHeader_SoStage)
         {
 
             DataClassification = ToBeClassified;
-            TableRelation = "Sales Header"."SO Stage";
+            //TableRelation = "Sales Header"."SO Stage";
         }
 
 

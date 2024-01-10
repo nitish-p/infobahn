@@ -5,7 +5,9 @@ page 50029 "NLC Ledger List"
     PageType = List;
     SourceTable = "NLC Ledger";
     UsageCategory = Lists;
-    AutoSplitKey = true;
+    // AutoSplitKey = true;
+    InsertAllowed = true;
+
 
     layout
     {
@@ -13,10 +15,15 @@ page 50029 "NLC Ledger List"
         {
             repeater(General)
             {
-                field("Average NLC"; Rec."Average NLC")
+                field("Program ID"; Rec."Program ID")
                 {
-                    ToolTip = 'Specifies the value of the Average NLC field.';
+                    ToolTip = 'Specifies the value of the Program ID field.';
                 }
+                field("Program Name"; Rec."Program Name")
+                {
+                    ToolTip = 'Specifies the value of the Program Name field.';
+                }
+
                 field("Document No."; Rec."Document No.")
                 {
                     ToolTip = 'Specifies the value of the Document No. field.';
@@ -29,14 +36,7 @@ page 50029 "NLC Ledger List"
                 {
                     ToolTip = 'Specifies the value of the Item Name field.';
                 }
-                field("Program ID"; Rec."Program ID")
-                {
-                    ToolTip = 'Specifies the value of the Program ID field.';
-                }
-                field("Program Name"; Rec."Program Name")
-                {
-                    ToolTip = 'Specifies the value of the Program Name field.';
-                }
+
                 field(Quantity; Rec.Quantity)
                 {
                     ToolTip = 'Specifies the value of the Quantity field.';
@@ -60,6 +60,10 @@ page 50029 "NLC Ledger List"
                 field("Total Rebate"; Rec."Total Rebate")
                 {
                     ToolTip = 'Specifies the value of the Total Rebate field.';
+                }
+                field("Average NLC"; Rec."Average NLC")
+                {
+                    ToolTip = 'Specifies the value of the Average NLC field.';
                 }
             }
         }

@@ -253,7 +253,7 @@ page 50004 "Main contract card"
                 var
                     myInt: Integer;
                 begin
-                    Message('send for approvel');
+                    Message('Send for approvel');
                 end;
 
             }

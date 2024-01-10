@@ -20,6 +20,23 @@ page 50012 "Purchase Indent"
                     DrillDownPageId = "No. Series";
 
                 }
+                field("Contract ID"; Rec."Contract ID")
+                {
+                    ToolTip = 'Specifies the value of the Contract ID field.';
+                }
+                field(" Vendor Contract ID"; Rec." Vendor Contract ID")
+                {
+                    ToolTip = 'Specifies the value of the  Vendor Contract ID field.';
+                }
+                field("Customer Contract ID"; Rec."Customer Contract ID")
+                {
+                    ToolTip = 'Specifies the value of the Customer Contract ID field.';
+                }
+                field("Service Type"; Rec."Service Type")
+                {
+                    ToolTip = 'Specifies the value of the Service Type field.';
+                }
+
                 field(" Type of PR"; Rec." Type of PR")
                 {
                     ToolTip = 'Specifies the value of the  Type of PR field.';
@@ -200,6 +217,7 @@ page 50012 "Purchase Indent"
                 {
                     ApplicationArea = all;
                 }
+
             }
             part(Line; "Purchase Indent Subform")
             {

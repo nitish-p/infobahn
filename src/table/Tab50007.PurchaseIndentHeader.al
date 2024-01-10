@@ -158,6 +158,22 @@ table 50007 "Purchase Indent Header"
 
 
         }
+        field(22; " Vendor Contract ID"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(23; "Contract ID"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(24; "Customer Contract ID"; code[20])
+        {
+            DataClassification = ToBeClassified;
+        }
+        field(25; "Service Type"; Enum VendorSubCon_ServiceType)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

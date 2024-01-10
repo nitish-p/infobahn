@@ -1,7 +1,7 @@
 enum 50034 "VendorSubCon_BillingFrequency"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = ' ';
@@ -10,15 +10,15 @@ enum 50034 "VendorSubCon_BillingFrequency"
     {
         Caption = 'Annaul';
     }
-    value(2; monthly)
+    value(2; Monthly)
     {
         Caption = 'monthly';
     }
-    value(3; quarterly)
+    value(3; Quarterly)
     {
         Caption = 'quarterly';
     }
-    value(4; "half yearly")
+    value(4; "Half Yearly")
     {
         Caption = 'half yearly';
     }

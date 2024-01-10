@@ -167,6 +167,21 @@ pageextension 50033 SalesInvoiceExt extends "Sales Invoice"
                 {
                     ApplicationArea = all;
                 }
+                field("Contract ID"; Rec."Contract ID")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Contract ID field.';
+                }
+                field("Customer PO No."; Rec."Customer PO No.")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Customer PO No. field.';
+                }
+                field("Service Type"; Rec."Service Type")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Service Type field.';
+                }
 
             }
         }

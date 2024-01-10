@@ -1,6 +1,6 @@
 page 50008 "Vendor Sub Contract"
 {
-    Caption = 'Vendor Sub Contract';
+    Caption = 'Vendor Contract';
     PageType = Document;
     SourceTable = "Vendor sub contract Header";
     ApplicationArea = all;
@@ -243,7 +243,7 @@ page 50008 "Vendor Sub Contract"
                 end;
 
             }
-            group(new)
+            group(New)
             {
                 action("Create Purchase Indent")
                 {
@@ -264,6 +264,11 @@ page 50008 "Vendor Sub Contract"
                         PurchIndentHdr.Init();
                         PurchIndentHdr."PR No." := NoserieMang.GetNextNo(purchsetup."Purchase Indent Nos.", Today, true);
                         PurchIndentHdr."Location Code" := rec.Location;
+                        PurchIndentHdr."Customer Contract ID" := rec."Customer Contract ID";
+                        PurchIndentHdr." Vendor Contract ID" := rec."Subcontracts ID";
+                        PurchIndentHdr."Contract ID" := rec."Contract ID";
+                        PurchIndentHdr."Service Type" := rec."Service Type";
+                        //PurchIndentHdr." SO No.":= rec.S;
                         PurchIndentHdr.Insert(true);
                         if PurchIndentHdr.Modify(True) then begin
                             LineNo := 10000;

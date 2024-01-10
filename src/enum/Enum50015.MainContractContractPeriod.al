@@ -1,7 +1,7 @@
 enum 50015 "MainContract_ContractPeriod"
 {
     Extensible = true;
-    
+
     value(0; " ")
     {
         Caption = ' ';
@@ -14,12 +14,20 @@ enum 50015 "MainContract_ContractPeriod"
     {
         Caption = 'Monthly';
     }
-    value(3; "Qtr. HY")
+    value(5; "Annaul")
     {
-        Caption = 'Qtr. HY';
+        Caption = 'Annaul';
     }
-    value(4; Y)
+    // value(5; Yearly)
+    // {
+    //     Caption = 'Yearly';
+    // }
+    value(3; "Quarterly")
     {
-        Caption = 'Y';
+
+    }
+    Value(4; "Half Yearly")
+    {
+
     }
 }
