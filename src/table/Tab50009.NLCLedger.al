@@ -71,7 +71,7 @@ table 50009 "NLC Ledger"
             DataClassification = ToBeClassified;
 
         }
-        field(14; "No."; Integer)
+        field(14; "No."; Code[20])
         {
             DataClassification = ToBeClassified;
         }
