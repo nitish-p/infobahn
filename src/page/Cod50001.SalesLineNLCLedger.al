@@ -10,13 +10,15 @@ codeunit 50001 SalesLineNLCLedger
         RecsalesInv: Record "Sales Invoice Header";
 
     begin
-        if RecsalesInv.Get(Rec."Document No.") then begin
-            SalesLine.Reset();
-            SalesLine.SetRange("Document No.", Rec."Document No.");
-            if SalesLine.FindFirst() then begin
-                Rec."Item Code" := SalesLine."No.";
-            end;
-        end;
+        // if RecsalesInv.Get(Rec."Document No.") then begin
+        //     SalesLine.Reset();
+        //     SalesLine.SetRange("Document No.", Rec."Document No.");
+        //     if SalesLine.FindFirst() then begin
+        //         Rec."Item Code" := SalesLine."No.";
+        //     end;
+        // SalesLine.Reset();
+        // SalesLine.SetRange();
+    end;
 
         // if SalesLine.FindFirst() then
         //     repeat
